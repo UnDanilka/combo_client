@@ -5,8 +5,19 @@
   justify-content: center;
   align-items: center;
   height: 100px;
-  background-color: $main_color;
   width: 100%;
+  &_light {
+    color: rgb(39, 38, 38);
+    &:hover {
+      color: rgba(39, 38, 38, 0.678);
+    }
+  }
+  &_dark {
+    color: rgb(197, 197, 197);
+    &:hover {
+      color: rgba(180, 178, 178, 0.76);
+    }
+  }
   &_items {
     display: flex;
     justify-content: center;
@@ -17,10 +28,7 @@
       font-weight: 500;
       &_link {
         text-decoration: none;
-        color: rgb(39, 38, 38);
-        &:hover {
-          color: rgba(39, 38, 38, 0.678);
-        }
+
         &_main {
           color: $white_color;
           border: 1px solid rgb(179, 179, 179);

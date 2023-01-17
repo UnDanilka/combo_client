@@ -4,10 +4,14 @@ import Todos from '../Page2/Todos'
 import Contacts from '../Page3/Contacts'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from '../NotFound/NotFound'
+import { useContext } from 'react'
+import ComboContext from '../../Context/ComboContext'
 
 function App() {
+  const { theme } = useContext(ComboContext)
+
   return (
-    <div className='app'>
+    <div className={`app ${theme === 'light' ? 'light' : 'dark'}`}>
       <Navbar />
       <div className='app_pages'>
         <Routes>

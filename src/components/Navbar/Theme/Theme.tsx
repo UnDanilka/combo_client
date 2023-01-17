@@ -5,6 +5,8 @@ import { useCallback } from 'react'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 
+const svgStyle = { width: '20px', marginRight: '5px' }
+
 const Theme = () => {
   const { theme, handleUpdateTheme } = useContext(ComboContext)
 
@@ -23,11 +25,11 @@ const Theme = () => {
     <div className='switch_wrapper'>
       {theme === 'light' ? (
         <div>
-          <Sun style={{ width: '20px', marginRight: '5px' }} />
+          <Sun style={svgStyle} />
         </div>
       ) : (
         <div>
-          <Moon style={{ width: '20px', marginRight: '5px' }} />
+          <Moon style={svgStyle} />
         </div>
       )}
       <Switch onChange={handleThemeChange} />

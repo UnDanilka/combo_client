@@ -4,9 +4,16 @@ body {
 
 .app {
   height: 100vh;
-  background-color: $main_color;
   font-family: 'Circular-loom';
   &_pages {
     padding: 15px;
   }
+}
+
+.light {
+  background-color: $light_color;
+}
+.dark {
+  background-color: $dark_color;
+  color: $white_color !important;
 }
