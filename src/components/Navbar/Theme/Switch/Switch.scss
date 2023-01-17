@@ -1,0 +1,23 @@
+.switch {
+  width: 40px;
+  height: 20px;
+  background-color: grey;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.switch:hover {
+  cursor: pointer;
+}
+
+.switch-ball {
+  background-color: rgb(255, 255, 255);
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 3px;
+
+  transition: all 0.3s ease-in-out;
+}

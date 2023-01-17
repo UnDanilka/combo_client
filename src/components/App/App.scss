@@ -1,3 +1,12 @@
-.App {
-  background-color: red;
+body {
+  margin: 0;
+}
+
+.app {
+  height: 100vh;
+  background-color: $main_color;
+  font-family: 'Circular-loom';
+  &_pages {
+    padding: 15px;
+  }
 }
