@@ -2,7 +2,6 @@ import Switch from './Switch/Switch'
 import './Theme.css'
 import { ReactComponent as Moon } from './moon.svg'
 import { ReactComponent as Sun } from './sun.svg'
-// import { Istore } from "../../types";
 import { useCallback } from 'react'
 
 const Theme = () => {
