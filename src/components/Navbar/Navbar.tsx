@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Theme from './Theme/Theme'
 
 const Navbar = () => {
   return (
@@ -20,6 +21,7 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+      <Theme />
       <div className='navbar_divider' />
     </div>
   )

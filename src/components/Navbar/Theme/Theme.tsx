@@ -1,17 +1,23 @@
 import Switch from './Switch/Switch'
-import './Theme.css'
 import { ReactComponent as Moon } from './moon.svg'
 import { ReactComponent as Sun } from './sun.svg'
 import { useCallback } from 'react'
+import { useContext } from 'react'
+import ComboContext from '../../../Context/ComboContext'
 
 const Theme = () => {
-  const handleThemeChange = useCallback((e: boolean) => {
-    if (e) {
-      console.log(e)
-    } else {
-      console.log(e)
-    }
-  }, [])
+  const { theme, handleUpdateTheme } = useContext(ComboContext)
+
+  const handleThemeChange = useCallback(
+    (e: boolean) => {
+      if (e) {
+        handleUpdateTheme('light')
+      } else {
+        handleUpdateTheme('dark')
+      }
+    },
+    [handleUpdateTheme],
+  )
 
   return (
     <div className='switch_wrapper'>

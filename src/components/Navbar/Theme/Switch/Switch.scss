@@ -5,10 +5,17 @@
   border-radius: 15px;
   display: flex;
   align-items: center;
-}
-
-.switch:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+  &_ball {
+    background-color: rgb(255, 255, 255);
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+  }
 }
 
 .switch-ball {
@@ -17,7 +24,5 @@
   height: 15px;
   border-radius: 15px;
   padding: 5px;
-  margin: 3px;
-
   transition: all 0.3s ease-in-out;
 }
