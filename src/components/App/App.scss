@@ -6,7 +6,9 @@ body {
   height: 100vh;
   font-family: 'Circular-loom';
   &_pages {
+    display: flex;
     padding: 15px;
+    height: calc(100vh - 130px);
   }
 }
 
