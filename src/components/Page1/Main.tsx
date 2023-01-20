@@ -1,7 +1,7 @@
-import good from './photo.jpg'
-import bad from './photo_dark.jpg'
-import education from './education.jpg'
-import experience from './experience.jpg'
+import good from '../../assets/photo.jpg'
+import bad from '../../assets/photo_dark.jpg'
+import education from '../../assets/education.jpg'
+import experience from '../../assets/experience.jpg'
 import { useContext } from 'react'
 import ComboContext from '../../Context/ComboContext'
 
