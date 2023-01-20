@@ -17,3 +17,13 @@ export interface ISkillsItem {
 export interface IComboProvider {
   children: React.ReactNode
 }
+
+export interface IContact {
+  link: string
+  icon: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined
+    }
+  >
+  title: string
+}
