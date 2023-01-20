@@ -1,6 +1,6 @@
 import Switch from './Switch/Switch'
-import { ReactComponent as Moon } from './moon.svg'
-import { ReactComponent as Sun } from './sun.svg'
+import { ReactComponent as Moon } from '../../../assets/moon.svg'
+import { ReactComponent as Sun } from '../../../assets/sun.svg'
 import { useCallback } from 'react'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'

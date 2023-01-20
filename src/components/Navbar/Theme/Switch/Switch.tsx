@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { ISwitch } from '../../../../Types/types'
 
-const Switch = (props: any) => {
+const Switch = (props: ISwitch) => {
   const [on, setOn] = useState(true)
 
   const { onChange } = props
