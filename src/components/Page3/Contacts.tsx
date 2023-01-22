@@ -3,7 +3,6 @@ import { ReactComponent as Tg } from '../../assets/tg.svg'
 import { ReactComponent as Ig } from '../../assets/ig.svg'
 import { ReactComponent as Gmail } from '../../assets/gmail.svg'
 import { ReactComponent as Apple } from '../../assets/apple.svg'
-import './Contacts.scss'
 import { IContact } from '../../Types/types'
 
 const Contacts = () => {
