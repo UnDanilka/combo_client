@@ -35,7 +35,7 @@ const TodosItem = ({ value, done, id }: ITodo) => {
 
   return (
     <motion.div {...motionRules} layout className='item'>
-      <div className='item_title'>
+      <div className={`item_title ${done && 'item_completed'}`}>
         <div className={`item_title_text ${done && 'done'}`}>{value}</div>
       </div>
       <div onClick={handleRemove} className='item_delete'>

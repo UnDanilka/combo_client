@@ -7,13 +7,16 @@ $input_color: #5059be;
   justify-content: center;
   align-items: center;
   background-color: $color;
-  width: 15%;
-  max-width: 60px;
-  border: 1px solid black;
-  border-radius: 25px;
+  width: 60px;
   transition-duration: 0.3s;
   &:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    opacity: 80%;
   }
+}
+
+@mixin box_shadow() {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
 }

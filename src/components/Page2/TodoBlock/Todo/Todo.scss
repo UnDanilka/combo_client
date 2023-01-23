@@ -7,8 +7,6 @@
     display: flex;
     border-radius: 5px;
     overflow: hidden;
-
-    // gap: 20px;
     width: 100%;
     max-width: 600px;
     &_field {
@@ -33,7 +31,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      // border-radius: 15px;
       transition-duration: 0.3s;
       background-color: $input_color;
       color: white;
