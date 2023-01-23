@@ -5,14 +5,18 @@
   align-items: center;
   &_input {
     display: flex;
-    gap: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    // gap: 20px;
     width: 100%;
     max-width: 600px;
     &_field {
-      border: 3px solid $input_color;
-      border-radius: 30px;
+      border-radius: 0px;
       background-color: transparent;
+      border: 3px solid $input_color;
       width: 100%;
+
       &:active {
         border-color: $input_color_active;
       }
@@ -29,13 +33,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 15px;
+      // border-radius: 15px;
       transition-duration: 0.3s;
       background-color: $input_color;
       color: white;
       &:hover {
         cursor: pointer;
-        transform: scale(1.3);
+        transform: scale(1.1);
       }
     }
   }
