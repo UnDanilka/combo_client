@@ -1,11 +1,7 @@
-import { Input } from 'antd'
-import { useContext } from 'react'
 import circle from '../../assets/circle.png'
-import ComboContext from '../../Context/ComboContext'
+import Todo from './Todo/Todo'
 
 const Todos = () => {
-  const { theme } = useContext(ComboContext)
-
   return (
     <div className='todos'>
       <div className='todos_content'>
@@ -18,28 +14,7 @@ const Todos = () => {
               <img src={circle} alt='alt' className='todos_content_first_info_img_content' />
             </div>
           </div>
-          <div className='todos_content_first_main'>
-            <div className='todos_content_first_main_input'>
-              <Input
-                style={{ color: theme === 'light' ? 'black' : 'white' }}
-                className='todos_content_first_main_input_field'
-              />
-              <div className='todos_content_first_main_input_btn'>
-                <div className='todos_content_first_main_input_btn_text'>ADD</div>
-              </div>
-            </div>
-            <div className='todos_content_first_main_items'>
-              <div className='todos_content_first_main_items_item'>
-                <div className='todos_content_first_main_items_item_title'>
-                  <div className='todos_content_first_main_items_item_title_text'>bla</div>
-                </div>
-                <div className='todos_content_first_main_items_item_delete'>delete</div>
-                <div className='todos_content_first_main_items_item_done'>done</div>
-              </div>
-              <div className='todos_content_first_main_items_item'>2</div>
-              <div className='todos_content_first_main_items_item'>3</div>
-            </div>
-          </div>
+          <Todo />
         </div>
       </div>
     </div>
