@@ -3,7 +3,7 @@ import { useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { ITodo } from '../../../../Types/types'
 
 const Todo = () => {
@@ -40,13 +40,15 @@ const Todo = () => {
           </div>
         </div>
       </div>
-      <motion.div layout className='todo_items'>
+      <AnimateSharedLayout>
         <AnimatePresence>
-          {todoList.map(({ value, done, id }: ITodo) => {
-            return <TodosItem value={value} done={done} id={id} key={id} />
-          })}
+          <motion.div layout className='todo_items'>
+            {todoList.map(({ value, done, id }: ITodo) => {
+              return <TodosItem value={value} done={done} id={id} key={id} />
+            })}
+          </motion.div>
         </AnimatePresence>
-      </motion.div>
+      </AnimateSharedLayout>
     </div>
   )
 }
