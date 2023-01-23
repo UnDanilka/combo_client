@@ -7,28 +7,7 @@
   overflow: scroll;
   &_content {
     width: 100%;
-    &_first {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
-      &_info {
-        display: flex;
-        justify-content: center;
-        gap: 50px;
-        &_text {
-          width: 300px;
-          text-align: justify;
-          font-size: 30px;
-        }
-        &_img {
-          height: 200px;
-          &_content {
-            height: 100%;
-          }
-        }
-      }
 
-      @import './TodoBlock/Todo/Todo.scss';
-    }
+    @import './TodoBlock/TodoBlock.scss';
   }
 }
