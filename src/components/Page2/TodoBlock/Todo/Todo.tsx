@@ -1,9 +1,9 @@
 import { Input } from 'antd'
-import { ReactNode, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ITodo } from '../../../../Types/types'
 
 const Todo = () => {
@@ -40,13 +40,13 @@ const Todo = () => {
           </div>
         </div>
       </div>
-      <div className='todo_items'>
+      <motion.div layout className='todo_items'>
         <AnimatePresence>
           {todoList.map(({ value, done, id }: ITodo) => {
             return <TodosItem value={value} done={done} id={id} key={id} />
           })}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   )
 }

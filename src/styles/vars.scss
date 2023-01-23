@@ -15,7 +15,12 @@ $input_color: #5059be;
   }
 }
 
-@mixin box_shadow() {
+@mixin boxShadow_div() {
+  box-shadow: 0px -2px 17px 11px rgba(0, 0, 0, 0.77);
+  -webkit-box-shadow: 0px -2px 17px 11px rgba(0, 0, 0, 0.77);
+  -moz-box-shadow: 0px -2px 17px 11px rgba(0, 0, 0, 0.77);
+}
+@mixin boxShadow_todo() {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.35);
