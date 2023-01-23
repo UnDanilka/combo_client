@@ -18,9 +18,9 @@
     background-color: rgba(173, 101, 101, 0.445);
   }
   &_delete {
-    @include btn_action(rgb(144, 47, 47));
+    @include btn_action(rgba(206, 15, 15, 0.74));
   }
   &_done {
-    @include btn_action(rgb(47, 138, 47));
+    @include btn_action(rgba(36, 172, 36, 0.767));
   }
 }

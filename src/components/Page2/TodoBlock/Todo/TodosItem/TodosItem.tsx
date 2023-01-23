@@ -4,7 +4,7 @@ import ComboContext from '../../../../../Context/ComboContext'
 import { motion } from 'framer-motion'
 import { ITodo } from '../../../../../Types/types'
 
-const iconStyle = { color: 'white' }
+const iconStyle = { color: 'white', fontSize: '30px' }
 const motionRules = {
   initial: { scale: 0 },
   animate: { scale: 1 },

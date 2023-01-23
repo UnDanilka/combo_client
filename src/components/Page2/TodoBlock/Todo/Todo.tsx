@@ -1,5 +1,5 @@
 import { Input } from 'antd'
-import { useContext, useState } from 'react'
+import { ReactNode, useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
@@ -18,6 +18,12 @@ const Todo = () => {
     setInputValue('')
   }
 
+  const handleEnterDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleAdd()
+    }
+  }
+
   return (
     <div className='todo'>
       <div className='todo_input'>
@@ -26,6 +32,7 @@ const Todo = () => {
           className='todo_input_field'
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => handleEnterDown(e)}
         />
         <div className='todo_input_btn'>
           <div className='todo_input_btn_text' onClick={handleAdd}>
