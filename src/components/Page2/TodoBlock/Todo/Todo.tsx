@@ -1,10 +1,10 @@
 import { Input } from 'antd'
 import { useContext, useState } from 'react'
-import ComboContext from '../../../Context/ComboContext'
+import ComboContext from '../../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence } from 'framer-motion'
-import { ITodo } from '../../../Types/types'
+import { ITodo } from '../../../../Types/types'
 
 const Todo = () => {
   const { theme, todoList, handleUpdateTodoList } = useContext(ComboContext)

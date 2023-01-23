@@ -1,8 +1,8 @@
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons'
 import { useContext } from 'react'
-import ComboContext from '../../../../Context/ComboContext'
+import ComboContext from '../../../../../Context/ComboContext'
 import { motion } from 'framer-motion'
-import { ITodo } from '../../../../Types/types'
+import { ITodo } from '../../../../../Types/types'
 
 const iconStyle = { color: 'white' }
 const motionRules = {
