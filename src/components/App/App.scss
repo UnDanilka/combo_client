@@ -13,9 +13,11 @@ body {
 }
 
 .light {
-  background-color: $light_color;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
 }
 .dark {
-  background-color: $dark_color;
+  background: rgb(112, 110, 110);
+  background: radial-gradient(circle, rgba(112, 110, 110, 1) 0%, rgba(51, 51, 51, 1) 100%);
   color: $white_color !important;
 }
