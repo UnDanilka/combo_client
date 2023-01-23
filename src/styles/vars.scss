@@ -1,3 +1,21 @@
 $light_color: #cbc3ad;
 $dark_color: #2c2c2a;
 $white_color: rgb(231, 223, 223);
+$input_color_active: #5059be9b;
+$input_color: #5059be;
+
+@mixin btn_action($color) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color;
+  width: 15%;
+  max-width: 60px;
+  border: 1px solid black;
+  border-radius: 25px;
+  transition-duration: 0.3s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
