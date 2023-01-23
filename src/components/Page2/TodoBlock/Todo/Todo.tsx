@@ -19,21 +19,21 @@ const Todo = () => {
   }
 
   return (
-    <div className='todos_content_first_main'>
-      <div className='todos_content_first_main_input'>
+    <div className='todo'>
+      <div className='todo_input'>
         <Input
           style={{ color: theme === 'light' ? 'black' : 'white' }}
-          className='todos_content_first_main_input_field'
+          className='todo_input_field'
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <div className='todos_content_first_main_input_btn'>
-          <div className='todos_content_first_main_input_btn_text' onClick={handleAdd}>
+        <div className='todo_input_btn'>
+          <div className='todo_input_btn_text' onClick={handleAdd}>
             ADD
           </div>
         </div>
       </div>
-      <div className='todos_content_first_main_items'>
+      <div className='todo_items'>
         <AnimatePresence>
           {todoList.map(({ value, done, id }: ITodo) => {
             return <TodosItem value={value} done={done} id={id} key={id} />
