@@ -4,15 +4,17 @@ import ComboContext from '../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence } from 'framer-motion'
+import { ITodo } from '../../../Types/types'
 
 const Todo = () => {
   const { theme, todoList, handleUpdateTodoList } = useContext(ComboContext)
   const [inputValue, setInputValue] = useState('')
 
   const handleAdd = () => {
-    handleUpdateTodoList((prev: any) => {
-      return [...prev, { value: inputValue, done: false, id: uuidv4() }]
-    })
+    const prevTodoList: ITodo[] = [...todoList]
+    prevTodoList.push({ value: inputValue, done: false, id: uuidv4() })
+
+    handleUpdateTodoList(prevTodoList)
     setInputValue('')
   }
 
@@ -33,7 +35,7 @@ const Todo = () => {
       </div>
       <div className='todos_content_first_main_items'>
         <AnimatePresence>
-          {todoList.map(({ value, done, id }: any) => {
+          {todoList.map(({ value, done, id }: ITodo) => {
             return <TodosItem value={value} done={done} id={id} key={id} />
           })}
         </AnimatePresence>

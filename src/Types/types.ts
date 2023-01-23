@@ -27,3 +27,9 @@ export interface IContact {
   >
   title: string
 }
+
+export interface ITodo {
+  value: string
+  done: boolean
+  id: string
+}

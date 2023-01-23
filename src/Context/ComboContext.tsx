@@ -1,21 +1,21 @@
 import { createContext, useState } from 'react'
-import { IComboProvider } from '../Types/types'
+import { IComboProvider, ITodo } from '../Types/types'
 
 const ComboContext = createContext({
   theme: 'light',
   handleUpdateTheme: (type: string) => {},
-  todoList: [],
-  handleUpdateTodoList: (props: any) => {},
+  todoList: [{ value: '', id: '', done: false }],
+  handleUpdateTodoList: (props: ITodo[]) => {},
 })
 
 export const ComboProvider = ({ children }: IComboProvider) => {
-  const [theme, setTheme] = useState('light')
-  const [todoList, setTodoList] = useState<any>([])
+  const [theme, setTheme] = useState<string>('light')
+  const [todoList, setTodoList] = useState<ITodo[]>([])
 
   const handleUpdateTheme = (type: string) => {
     setTheme(type)
   }
-  const handleUpdateTodoList = (props: any) => {
+  const handleUpdateTodoList = (props: ITodo[]) => {
     setTodoList(props)
   }
 

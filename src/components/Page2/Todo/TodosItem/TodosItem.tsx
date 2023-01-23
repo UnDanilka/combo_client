@@ -2,6 +2,7 @@ import { CloseOutlined, CheckOutlined } from '@ant-design/icons'
 import { useContext } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import { motion } from 'framer-motion'
+import { ITodo } from '../../../../Types/types'
 
 const iconStyle = { color: 'white' }
 const motionRules = {
@@ -11,12 +12,12 @@ const motionRules = {
   transition: { duration: 0.5 },
 }
 
-const TodosItem = ({ value, done, id }: any) => {
+const TodosItem = ({ value, done, id }: ITodo) => {
   const { todoList, handleUpdateTodoList } = useContext(ComboContext)
 
   const handleSetDone = () => {
     const prevTodoList = [...todoList]
-    const updatedTodoList = prevTodoList.map((todo: any) => {
+    const updatedTodoList = prevTodoList.map((todo: ITodo) => {
       if (todo.id === id) {
         return { ...todo, done: true }
       }
@@ -26,8 +27,8 @@ const TodosItem = ({ value, done, id }: any) => {
   }
 
   const handleRemove = () => {
-    const prevTodoList: any = [...todoList]
-    const idx = prevTodoList.findIndex((item: any) => item.id === id)
+    const prevTodoList: ITodo[] = [...todoList]
+    const idx = prevTodoList.findIndex((item: ITodo) => item.id === id)
     prevTodoList.splice(idx, 1)
     handleUpdateTodoList(prevTodoList)
   }
