@@ -1,5 +1,5 @@
 import { Input } from 'antd'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'

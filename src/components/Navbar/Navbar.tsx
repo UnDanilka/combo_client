@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className='navbar'>
       <div className='navbar_items'>
         <div className='navbar_items_item '>
-          <Link className='navbar_items_item_link navbar_items_item_link_main ' to='/'>
+          <Link className={`navbar_items_item_link ${theme === 'light' ? 'navbar_light' : 'navbar_dark'}`} to='/'>
             Main
           </Link>
         </div>

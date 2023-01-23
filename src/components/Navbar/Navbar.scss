@@ -28,18 +28,6 @@
       font-weight: 500;
       &_link {
         text-decoration: none;
-
-        &_main {
-          color: $white_color;
-          border: 1px solid rgb(179, 179, 179);
-          border-radius: 25px;
-          padding: 15px;
-          background-color: #dd7143;
-          &:hover {
-            background-color: #dd7143bd;
-            color: $white_color;
-          }
-        }
       }
     }
   }
