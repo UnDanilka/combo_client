@@ -34,14 +34,14 @@ const TodosItem = ({ value, done, id }: ITodo) => {
   }
 
   return (
-    <motion.div {...motionRules} layout className='todos_content_first_main_items_item'>
-      <div className='todos_content_first_main_items_item_title'>
-        <div className={`todos_content_first_main_items_item_title_text ${done && 'done'}`}>{value}</div>
+    <motion.div {...motionRules} layout className='item'>
+      <div className='item_title'>
+        <div className={`item_title_text ${done && 'done'}`}>{value}</div>
       </div>
-      <div onClick={handleRemove} className='todos_content_first_main_items_item_delete'>
+      <div onClick={handleRemove} className='item_delete'>
         <CloseOutlined style={iconStyle} />
       </div>
-      <div onClick={handleSetDone} className='todos_content_first_main_items_item_done'>
+      <div onClick={handleSetDone} className='item_done'>
         <CheckOutlined style={iconStyle} />
       </div>
     </motion.div>
