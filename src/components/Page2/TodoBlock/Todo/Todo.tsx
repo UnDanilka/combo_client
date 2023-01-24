@@ -11,6 +11,10 @@ const Todo = () => {
   const [inputValue, setInputValue] = useState('')
 
   const handleAdd = () => {
+    if (inputValue === '') {
+      console.log('no value')
+      return
+    }
     const prevTodoList: ITodo[] = [...todoList]
     prevTodoList.push({ value: inputValue, done: false, id: uuidv4() })
 
