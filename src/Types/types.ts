@@ -33,3 +33,5 @@ export interface ITodo {
   done: boolean
   id: string
 }
+
+export type NotificationType = 'success' | 'info' | 'warning' | 'error'

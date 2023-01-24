@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { ITodo } from '../../../../Types/types'
+import openNotification from '../../../Notification/notification'
 
 const Todo = () => {
   const { theme, todoList, handleUpdateTodoList } = useContext(ComboContext)
@@ -12,11 +13,11 @@ const Todo = () => {
 
   const handleAdd = () => {
     if (inputValue === '') {
-      console.log('no value')
+      openNotification('error', 'Please enter a value')
       return
     }
     const prevTodoList: ITodo[] = [...todoList]
-    prevTodoList.push({ value: inputValue, done: false, id: uuidv4() })
+    prevTodoList.unshift({ value: inputValue, done: false, id: uuidv4() })
 
     handleUpdateTodoList(prevTodoList)
     setInputValue('')
