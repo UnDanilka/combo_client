@@ -36,12 +36,12 @@ const Todo = () => {
       <div className='todo_input'>
         <Input
           style={{ color: theme === 'light' ? 'black' : 'white' }}
-          className='todo_input_field'
+          className={`todo_input_field ${todoList.length === 0 && 'todo_input_field-empty'}`}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => handleEnterDown(e)}
         />
-        <div onClick={handleAdd} className='todo_input_btn'>
+        <div onClick={handleAdd} className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}>
           <div className='todo_input_btn_text'>ADD</div>
         </div>
       </div>

@@ -2,6 +2,8 @@ $white_color: rgb(231, 223, 223);
 $todo_color: #5059be9a;
 $opacity_active: 65%;
 $borderRadius_todo: 15px;
+$input_transition: all 0.2s ease-in-out;
+$input_transition_empty: all 1s ease-in-out;
 
 @mixin btn_action($color) {
   display: flex;

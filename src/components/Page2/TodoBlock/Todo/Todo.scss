@@ -13,12 +13,14 @@
   &_input {
     display: flex;
     width: 100%;
+
     &_field {
       border-radius: 0px;
       border-top-left-radius: $borderRadius_todo;
       background-color: transparent;
       border: 3px solid $todo_color;
       width: 100%;
+      transition: $input_transition;
 
       &:active {
         opacity: $opacity_active;
@@ -30,13 +32,18 @@
         opacity: $opacity_active;
       }
     }
+    &_field-empty {
+      border-bottom-left-radius: $borderRadius_todo;
+      transition: $input_transition_empty;
+    }
+
     &_btn {
       border: 1px solid rgba(0, 0, 0, 0.02);
       padding: 5px;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition-duration: 0.3s;
+      transition: $input_transition;
       background-color: $todo_color;
       color: white;
       border-top-right-radius: $borderRadius_todo;
@@ -45,6 +52,10 @@
         cursor: pointer;
         transform: scale(1.1);
       }
+    }
+    &_btn-empty {
+      border-bottom-right-radius: $borderRadius_todo;
+      transition: $input_transition_empty;
     }
   }
   &_wrapper {
