@@ -1,6 +1,7 @@
 $white_color: rgb(231, 223, 223);
-$input_color_active: #5059be9b;
 $input_color: #5059be;
+$opacity_active: 65%;
+$borderRadius_input: 15px;
 
 @mixin btn_action($color) {
   display: flex;
@@ -15,6 +16,7 @@ $input_color: #5059be;
   }
 }
 
+$maxWidth_todo: 600px;
 @mixin boxShadow_div() {
   box-shadow: 0px -2px 17px 11px rgba(0, 0, 0, 0.77);
   -webkit-box-shadow: 0px -2px 17px 11px rgba(0, 0, 0, 0.77);

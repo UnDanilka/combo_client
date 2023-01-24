@@ -41,13 +41,13 @@ const Todo = () => {
         </div>
       </div>
       <AnimateSharedLayout>
-        <AnimatePresence>
-          <motion.div layout className='todo_items'>
+        <motion.div layout className='todo_items'>
+          <AnimatePresence>
             {todoList.map(({ value, done, id }: ITodo) => {
               return <TodosItem value={value} done={done} id={id} key={id} />
             })}
-          </motion.div>
-        </AnimatePresence>
+          </AnimatePresence>
+        </motion.div>
       </AnimateSharedLayout>
     </div>
   )

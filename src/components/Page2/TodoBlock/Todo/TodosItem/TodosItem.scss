@@ -1,11 +1,10 @@
 .item {
   display: flex;
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   margin-top: 15px;
   border-radius: 10px;
   overflow: hidden;
-  @include boxShadow_todo();
   &_title {
     background-color: #7e6f6f45;
     flex-basis: 90%;

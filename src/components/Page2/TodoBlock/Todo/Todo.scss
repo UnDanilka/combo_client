@@ -6,27 +6,27 @@
   max-height: 500px;
   transition: all 1s ease-in-out;
   padding-top: 20px;
+  width: 90%;
+  max-width: $maxWidth_todo;
 
   &_input {
     display: flex;
-    border-radius: 5px;
-    overflow: hidden;
     width: 100%;
-    max-width: 600px;
     &_field {
       border-radius: 0px;
+      border-top-left-radius: $borderRadius_input;
       background-color: transparent;
       border: 3px solid $input_color;
       width: 100%;
 
       &:active {
-        border-color: $input_color_active;
+        opacity: $opacity_active;
       }
       &:focus {
-        border-color: $input_color_active;
+        opacity: $opacity_active;
       }
       &:hover {
-        border-color: $input_color_active;
+        opacity: $opacity_active;
       }
     }
     &_btn {
@@ -38,6 +38,8 @@
       transition-duration: 0.3s;
       background-color: $input_color;
       color: white;
+      border-top-right-radius: $borderRadius_input;
+
       &:hover {
         cursor: pointer;
         transform: scale(1.1);
@@ -45,15 +47,19 @@
     }
   }
   &_items {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     max-height: 500px;
     overflow: scroll;
-    padding-bottom: 70px;
-    border-radius: 15px;
-    border: 1px solid black;
+    padding-bottom: 20px;
+    border: 3px solid black;
+    border-bottom-right-radius: $borderRadius_input;
+    border-bottom-left-radius: $borderRadius_input;
+    border-top: none;
+    box-sizing: border-box;
+    @include boxShadow_todo;
 
     .done {
       text-decoration: line-through;
