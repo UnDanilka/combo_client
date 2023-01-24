@@ -24,6 +24,13 @@ const Todo = () => {
     }
   }
 
+  const motionRules = {
+    initial: { y: -100 },
+    animate: { y: 0 },
+    exit: { y: -100 },
+    transition: { duration: 0.5 },
+  }
+
   return (
     <div className='todo'>
       <div className='todo_input'>
@@ -34,21 +41,25 @@ const Todo = () => {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => handleEnterDown(e)}
         />
-        <div className='todo_input_btn'>
-          <div className='todo_input_btn_text' onClick={handleAdd}>
-            ADD
-          </div>
+        <div onClick={handleAdd} className='todo_input_btn'>
+          <div className='todo_input_btn_text'>ADD</div>
         </div>
       </div>
-      <AnimateSharedLayout>
-        <motion.div layout className='todo_items'>
-          <AnimatePresence>
-            {todoList.map(({ value, done, id }: ITodo) => {
-              return <TodosItem value={value} done={done} id={id} key={id} />
-            })}
-          </AnimatePresence>
-        </motion.div>
-      </AnimateSharedLayout>
+      <div className='todo_wrapper'>
+        <AnimatePresence>
+          {todoList.length > 0 && (
+            <AnimateSharedLayout>
+              <motion.div layout {...motionRules} className='todo_wrapper_items'>
+                <AnimatePresence>
+                  {todoList.map(({ value, done, id }: ITodo) => {
+                    return <TodosItem value={value} done={done} id={id} key={id} />
+                  })}
+                </AnimatePresence>
+              </motion.div>
+            </AnimateSharedLayout>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
