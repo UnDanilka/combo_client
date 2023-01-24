@@ -1,8 +1,8 @@
 .notification {
   background-color: rgba(218, 52, 52, 0.233);
-  color: white;
+  color: $white_color;
   backdrop-filter: blur(10px);
   .message {
-    color: white;
+    color: $white_color;
   }
 }
