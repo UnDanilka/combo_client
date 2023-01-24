@@ -1,7 +1,7 @@
 $white_color: rgb(231, 223, 223);
-$input_color: #5059be;
+$todo_color: #5059be9a;
 $opacity_active: 65%;
-$borderRadius_input: 15px;
+$borderRadius_todo: 15px;
 
 @mixin btn_action($color) {
   display: flex;

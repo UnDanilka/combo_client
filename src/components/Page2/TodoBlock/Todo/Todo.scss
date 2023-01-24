@@ -8,15 +8,16 @@
   padding-top: 20px;
   width: 90%;
   max-width: $maxWidth_todo;
+  margin-bottom: 20px;
 
   &_input {
     display: flex;
     width: 100%;
     &_field {
       border-radius: 0px;
-      border-top-left-radius: $borderRadius_input;
+      border-top-left-radius: $borderRadius_todo;
       background-color: transparent;
-      border: 3px solid $input_color;
+      border: 3px solid $todo_color;
       width: 100%;
 
       &:active {
@@ -36,9 +37,9 @@
       justify-content: center;
       align-items: center;
       transition-duration: 0.3s;
-      background-color: $input_color;
+      background-color: $todo_color;
       color: white;
-      border-top-right-radius: $borderRadius_input;
+      border-top-right-radius: $borderRadius_todo;
 
       &:hover {
         cursor: pointer;
@@ -54,11 +55,12 @@
     max-height: 500px;
     overflow: scroll;
     padding-bottom: 20px;
-    border: 3px solid black;
-    border-bottom-right-radius: $borderRadius_input;
-    border-bottom-left-radius: $borderRadius_input;
+    border: 3px solid $todo_color;
+    border-bottom-right-radius: $borderRadius_todo;
+    border-bottom-left-radius: $borderRadius_todo;
     border-top: none;
     box-sizing: border-box;
+    background-color: #3a52623d;
     @include boxShadow_todo;
 
     .done {
