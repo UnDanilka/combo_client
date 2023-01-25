@@ -1,7 +1,16 @@
 .drawer {
   position: absolute;
-  background-color: rgba(141, 171, 177, 0.377);
+  display: flex;
+  background-color: rgba(166, 192, 197, 0.377);
   width: 100%;
   height: 100%;
   z-index: 1;
+  &_menu {
+    width: 300px;
+    background-color: #44414175;
+    backdrop-filter: blur(5px);
+  }
+  &_space {
+    flex: 1;
+  }
 }
