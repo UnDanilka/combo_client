@@ -8,7 +8,14 @@ const ComboContext = createContext({
   handleUpdateTodoList: (props: ITodo[]) => {},
   isDrawer: false,
   handleUpdateIsDrawer: (is: boolean) => {},
+  links: [{ title: '', link: '' }],
 })
+
+const links = [
+  { title: 'Main', link: '/' },
+  { title: 'Todo', link: '/todos' },
+  { title: 'Contacts', link: '/contacts' },
+]
 
 export const ComboProvider = ({ children }: IComboProvider) => {
   const [theme, setTheme] = useState<string>('light')
@@ -27,7 +34,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
 
   return (
     <ComboContext.Provider
-      value={{ theme, handleUpdateTheme, todoList, handleUpdateTodoList, isDrawer, handleUpdateIsDrawer }}
+      value={{ theme, handleUpdateTheme, todoList, handleUpdateTodoList, isDrawer, handleUpdateIsDrawer, links }}
     >
       {children}
     </ComboContext.Provider>

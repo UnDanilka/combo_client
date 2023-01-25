@@ -4,6 +4,7 @@ $opacity_active: 65%;
 $borderRadius_todo: 15px;
 $input_transition: all 0.2s ease-in-out;
 $input_transition_empty: all 1s ease-in-out;
+$drawer_content_width: 80%;
 
 @mixin btn_action($color) {
   display: flex;
