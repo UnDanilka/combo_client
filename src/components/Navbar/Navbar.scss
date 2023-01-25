@@ -39,3 +39,14 @@
     background-color: rgba(121, 120, 120, 0.411);
   }
 }
+
+@import './NavbarSmall/NavbarSmall.scss';
+
+@media (max-width: 700px) {
+  .navbar {
+    display: none;
+  }
+  .navbar-small {
+    display: flex;
+  }
+}

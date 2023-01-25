@@ -1,0 +1,34 @@
+.navbar-small {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  &_burger {
+    width: 80%;
+    &_btn {
+      width: fit-content;
+      transition: all 0.3s ease-in-out;
+      padding: 5px;
+      border: 3px solid rgba(17, 16, 16, 0.562);
+      border-radius: 5px;
+      &-light {
+        border: 3px solid rgba(255, 255, 255, 0.856);
+      }
+      &:hover {
+        cursor: pointer;
+        border-color: rgba(74, 160, 182, 0.795);
+        color: rgba(74, 160, 182, 0.795);
+      }
+    }
+  }
+  &_divider {
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    height: 1px;
+    background-color: rgba(121, 120, 120, 0.411);
+  }
+}
