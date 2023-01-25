@@ -6,11 +6,14 @@ const ComboContext = createContext({
   handleUpdateTheme: (type: string) => {},
   todoList: [{ value: '', id: '', done: false }],
   handleUpdateTodoList: (props: ITodo[]) => {},
+  isDrawer: false,
+  handleUpdateIsDrawer: (is: boolean) => {},
 })
 
 export const ComboProvider = ({ children }: IComboProvider) => {
   const [theme, setTheme] = useState<string>('light')
   const [todoList, setTodoList] = useState<ITodo[]>([])
+  const [isDrawer, setIsDrawer] = useState<boolean>(false)
 
   const handleUpdateTheme = (type: string) => {
     setTheme(type)
@@ -18,9 +21,14 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const handleUpdateTodoList = (props: ITodo[]) => {
     setTodoList(props)
   }
+  const handleUpdateIsDrawer = (is: boolean) => {
+    setIsDrawer(is)
+  }
 
   return (
-    <ComboContext.Provider value={{ theme, handleUpdateTheme, todoList, handleUpdateTodoList }}>
+    <ComboContext.Provider
+      value={{ theme, handleUpdateTheme, todoList, handleUpdateTodoList, isDrawer, handleUpdateIsDrawer }}
+    >
       {children}
     </ComboContext.Provider>
   )

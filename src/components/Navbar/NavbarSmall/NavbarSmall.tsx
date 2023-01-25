@@ -4,12 +4,20 @@ import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 
 const NavbarSmall = () => {
-  const { theme } = useContext(ComboContext)
+  const { theme, handleUpdateIsDrawer } = useContext(ComboContext)
+
+  const handleOpenDrawer = () => {
+    handleUpdateIsDrawer(true)
+  }
 
   return (
     <div className='navbar-small'>
+      <div className='navbar-small_drawer'></div>
       <div className='navbar-small_burger'>
-        <div className={`navbar-small_burger_btn ${theme === 'dark' && 'navbar-small_burger_btn-light'}`}>
+        <div
+          className={`navbar-small_burger_btn ${theme === 'dark' && 'navbar-small_burger_btn-light'}`}
+          onClick={handleOpenDrawer}
+        >
           <MenuOutlined />
         </div>
       </div>

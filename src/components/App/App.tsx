@@ -6,12 +6,14 @@ import { Routes, Route } from 'react-router-dom'
 import NotFound from '../NotFound/NotFound'
 import { useContext } from 'react'
 import ComboContext from '../../Context/ComboContext'
+import Drawer from '../Drawer/Drawer'
 
 function App() {
   const { theme } = useContext(ComboContext)
 
   return (
     <div className={`app ${theme === 'light' ? 'light' : 'dark'}`}>
+      <Drawer />
       <Navbar />
       <div className='app_pages'>
         <Routes>
