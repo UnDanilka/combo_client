@@ -4,6 +4,9 @@
   overflow: scroll;
   align-items: center;
   &_nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
   }
   &_content {
     overflow: scroll;

@@ -18,7 +18,7 @@ function App() {
       <div className='app_pages'>
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/todos' element={<Todos />} />
+          <Route path='/todos/*' element={<Todos />} />
           <Route path='/contacts' element={<Contacts />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

@@ -5,17 +5,17 @@ import Tabs from '../Tabs/Tabs'
 
 const todoBlocksList: ITodoBlock[] = [
   {
-    label: 'State',
+    label: 'state',
     text: 'Lets test an ordinary todo list. There is nothing special, state management is in base react state.',
     img: circle,
   },
   {
-    label: 'Server',
+    label: 'server',
     text: 'Text about a server',
     img: circle,
   },
   {
-    label: 'Blockchain',
+    label: 'blockchain',
     text: 'Text about a blockchain',
     img: circle,
   },
