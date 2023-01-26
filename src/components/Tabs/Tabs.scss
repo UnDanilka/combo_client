@@ -3,6 +3,7 @@
   flex-direction: column;
   overflow: scroll;
   align-items: center;
+  width: 100%;
   &_nav {
     overflow: hidden;
     position: relative;
@@ -11,7 +12,7 @@
     border-radius: 25px;
     background-color: rgba(161, 67, 67, 0.376);
     color: $white_color;
-
+    min-height: 40px;
     &:hover {
       cursor: pointer;
     }
@@ -31,5 +32,6 @@
   }
   &_content {
     overflow: scroll;
+    width: 100%;
   }
 }
