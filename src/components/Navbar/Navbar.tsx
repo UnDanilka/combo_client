@@ -9,8 +9,7 @@ const Navbar = () => {
   const [size, setSize] = useState('big')
 
   useEffect(() => {
-    const handleWidthChecker = (e: UIEvent) => {
-      const window = e.target as Window
+    const widthCondition = () => {
       if (window.innerWidth > 700) {
         setSize('big')
       } else {
@@ -18,9 +17,12 @@ const Navbar = () => {
       }
     }
 
-    window.addEventListener('resize', (e) => handleWidthChecker(e))
+    widthCondition()
+
+    window.addEventListener('resize', widthCondition)
+
     return () => {
-      window.removeEventListener('resize', handleWidthChecker)
+      window.removeEventListener('resize', widthCondition)
     }
   }, [])
 

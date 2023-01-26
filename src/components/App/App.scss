@@ -4,7 +4,8 @@ body {
 
 .app {
   height: 100vh;
-  font-family: 'Circular-loom';
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   &_pages {
     display: flex;
     padding: 15px;

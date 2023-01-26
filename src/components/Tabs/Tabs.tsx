@@ -12,19 +12,26 @@ const Tabs = ({ elements }: ITabs) => {
     navigate(currentTab)
   }, [currentTab, navigate])
 
-  const handleUpdateCurrentTab = (e: any, label: string) => {
-    const elem = e.target
+  const handleUpdateCurrentTab = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, label: string) => {
+    const elem = e.target as HTMLElement
     setActiveCoords({ left: elem.offsetLeft, width: elem.offsetWidth })
     setCurrentTab(label)
     navigate(currentTab)
   }
+
+  useEffect(() => {
+    const elem = document.querySelector(`#${location.pathname.split('/')[2] || 'state'}`) as HTMLElement
+    if (elem) {
+      setActiveCoords({ left: elem.offsetLeft, width: elem.offsetWidth })
+    }
+  }, [location.pathname])
 
   return (
     <div className='tabs'>
       <div className='tabs_nav'>
         {elements.map(({ label }, key) => {
           return (
-            <div key={key} className='tabs_nav_item' onClick={(e) => handleUpdateCurrentTab(e, label)}>
+            <div key={key} id={label} className='tabs_nav_item' onClick={(e) => handleUpdateCurrentTab(e, label)}>
               {label}
             </div>
           )
