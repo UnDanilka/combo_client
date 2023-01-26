@@ -56,4 +56,10 @@ export interface IElement {
   label: string
 }
 
+export interface IColors {
+  state: string
+  server: string
+  blockchain: string
+}
+
 export type NotificationType = 'success' | 'info' | 'warning' | 'error'

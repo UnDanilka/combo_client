@@ -1,9 +1,11 @@
-import { ITodo, ITodoBlock } from '../../../Types/types'
+import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 import { v4 as uuidv4 } from 'uuid'
 import openNotification from '../../Notification/notification'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
+
+const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
   const { todoList, handleUpdateTodoList } = useContext(ComboContext)
@@ -49,7 +51,13 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
           <img src={img} alt='alt' className='block_info_img_content' />
         </div>
       </div>
-      <Todo handleAdd={handleAdd} todoList={todoList} handleSetDone={handleSetDone} handleRemove={handleRemove} />
+      <Todo
+        handleAdd={handleAdd}
+        todoList={todoList}
+        handleSetDone={handleSetDone}
+        handleRemove={handleRemove}
+        color={colors[label as keyof typeof colors]}
+      />
     </div>
   )
 }

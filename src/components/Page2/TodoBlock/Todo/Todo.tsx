@@ -5,7 +5,7 @@ import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { ITodo } from '../../../../Types/types'
 
-const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove }: any) => {
+const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: any) => {
   const { theme } = useContext(ComboContext)
   const [inputValue, setInputValue] = useState('')
 
@@ -26,8 +26,8 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove }: any) => {
     <div className='todo'>
       <div className='todo_input'>
         <Input
-          style={{ color: theme === 'light' ? 'black' : 'white' }}
-          className={`todo_input_field ${todoList.length === 0 && 'todo_input_field-empty'}`}
+          style={{ color: theme === 'light' ? 'black' : 'white', borderColor: color }}
+          className={`todo_input_field  ${todoList.length === 0 && 'todo_input_field-empty'}`}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => handleEnterDown(e)}
@@ -35,6 +35,7 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove }: any) => {
         <div
           onClick={() => handleAdd(inputValue, setInputValue)}
           className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}
+          style={{ backgroundColor: color }}
         >
           <div className='todo_input_btn_text'>ADD</div>
         </div>
@@ -43,7 +44,7 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove }: any) => {
         <AnimatePresence>
           {todoList.length > 0 && (
             <AnimateSharedLayout>
-              <motion.div layout {...motionRules} className='todo_wrapper_items'>
+              <motion.div layout {...motionRules} className='todo_wrapper_items' style={{ borderColor: color }}>
                 <AnimatePresence>
                   {todoList.map(({ value, done, id }: ITodo) => {
                     return (
