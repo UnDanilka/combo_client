@@ -31,9 +31,9 @@ const Navbar = () => {
       {size === 'big' ? (
         <div className='navbar'>
           <div className='navbar_items'>
-            {links.map((link) => {
+            {links.map((link, idx) => {
               return (
-                <div className='navbar_items_item '>
+                <div key={idx} className='navbar_items_item '>
                   <Link
                     className={`navbar_items_item_link ${theme === 'light' ? 'navbar_light' : 'navbar_dark'}`}
                     to={link.link}

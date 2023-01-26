@@ -21,8 +21,8 @@ const todoBlocksList: ITodoBlock[] = [
   },
 ]
 
-const tabsElements = todoBlocksList.map(({ text, img, label }) => {
-  return { element: <TodoBlock text={text} img={img} label={label} />, label }
+const tabsElements = todoBlocksList.map(({ text, img, label }, idx) => {
+  return { element: <TodoBlock key={idx} text={text} img={img} label={label} />, label }
 })
 
 const Todos = () => {
