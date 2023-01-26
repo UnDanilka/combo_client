@@ -19,9 +19,9 @@ const Tabs = ({ elements }: ITabs) => {
   return (
     <div className='tabs'>
       <div className='tabs_nav'>
-        {elements.map(({ label }) => {
+        {elements.map(({ label }, key) => {
           return (
-            <div className='tabs_nav_item' onClick={() => handleUpdateCurrentTab(label)}>
+            <div key={key} className='tabs_nav_item' onClick={() => handleUpdateCurrentTab(label)}>
               {label}
             </div>
           )

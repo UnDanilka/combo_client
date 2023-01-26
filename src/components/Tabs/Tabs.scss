@@ -7,6 +7,18 @@
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+    border-radius: 25px;
+    padding: 5px;
+    background-color: rgba(161, 67, 67, 0.376);
+    color: $white_color;
+    &:hover {
+      cursor: pointer;
+    }
+    &_item {
+      &:hover {
+        opacity: 70%;
+      }
+    }
   }
   &_content {
     overflow: scroll;
