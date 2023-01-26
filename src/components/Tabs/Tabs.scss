@@ -4,17 +4,26 @@
   overflow: scroll;
   align-items: center;
   &_nav {
+    overflow: hidden;
+    position: relative;
     display: flex;
-    gap: 10px;
     margin-bottom: 10px;
     border-radius: 25px;
-    padding: 5px;
     background-color: rgba(161, 67, 67, 0.376);
     color: $white_color;
+
     &:hover {
       cursor: pointer;
     }
+    &_active {
+      transition: all 0.3s ease-in-out;
+      position: absolute;
+      background-color: rgba(91, 189, 189, 0.322);
+      height: 100%;
+      width: 30px;
+    }
     &_item {
+      padding: 10px;
       &:hover {
         opacity: 70%;
       }

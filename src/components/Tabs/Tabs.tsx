@@ -6,12 +6,15 @@ const Tabs = ({ elements }: ITabs) => {
   const navigate = useNavigate()
   const location = useLocation()
   const [currentTab, setCurrentTab] = useState<string>(location.pathname.split('/')[2] || 'state')
+  const [activeCoords, setActiveCoords] = useState({ left: 0, width: 55 })
 
   useEffect(() => {
     navigate(currentTab)
   }, [currentTab, navigate])
 
-  const handleUpdateCurrentTab = (label: string) => {
+  const handleUpdateCurrentTab = (e: any, label: string) => {
+    const elem = e.target
+    setActiveCoords({ left: elem.offsetLeft, width: elem.offsetWidth })
     setCurrentTab(label)
     navigate(currentTab)
   }
@@ -21,11 +24,12 @@ const Tabs = ({ elements }: ITabs) => {
       <div className='tabs_nav'>
         {elements.map(({ label }, key) => {
           return (
-            <div key={key} className='tabs_nav_item' onClick={() => handleUpdateCurrentTab(label)}>
+            <div key={key} className='tabs_nav_item' onClick={(e) => handleUpdateCurrentTab(e, label)}>
               {label}
             </div>
           )
         })}
+        <div className='tabs_nav_active' style={{ left: activeCoords.left, width: activeCoords.width }} />
       </div>
       <div className='tabs_content'>
         {elements.map(({ element, label }) => {
