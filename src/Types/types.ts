@@ -47,6 +47,14 @@ export interface ITodoBlock {
   img: string
 }
 
+export interface ITodoComponent {
+  handleAdd: (inputValue: string, setInputValue: (state: string) => void) => void
+  handleRemove: (id: string) => void
+  handleSetDone: (id: string) => void
+  todoList: ITodo[]
+  color: string
+}
+
 export interface ITabs {
   elements: IElement[]
 }

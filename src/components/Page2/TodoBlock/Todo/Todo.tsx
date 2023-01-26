@@ -3,9 +3,9 @@ import { useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
-import { ITodo } from '../../../../Types/types'
+import { ITodo, ITodoComponent } from '../../../../Types/types'
 
-const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: any) => {
+const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodoComponent) => {
   const { theme } = useContext(ComboContext)
   const [inputValue, setInputValue] = useState('')
 
