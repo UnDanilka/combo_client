@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 import { v4 as uuidv4 } from 'uuid'
@@ -10,9 +11,10 @@ const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
   const { todoList, handleUpdateTodoList } = useContext(ComboContext)
 
-  const handleAdd =
-    label === 'state'
-      ? (inputValue: string, setInputValue: (state: string) => void) => {
+  const handleAdd = () => {
+    switch (label) {
+      case 'state':
+        return (inputValue: string, setInputValue: (state: string) => void) => {
           if (inputValue === '') {
             openNotification('error', 'Please enter a value')
             return
@@ -23,7 +25,17 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
           handleUpdateTodoList(prevTodoList)
           setInputValue('')
         }
-      : () => console.log('hello')
+        break
+      case 'server':
+        return () => console.log('server')
+        break
+      case 'blockchain':
+        return () => console.log('blockchain')
+        break
+      default:
+        return () => console.log('default')
+    }
+  }
 
   const handleSetDone = (id: string) => {
     const prevTodoList = [...todoList]
@@ -52,7 +64,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         </div>
       </div>
       <Todo
-        handleAdd={handleAdd}
+        handleAdd={handleAdd()}
         todoList={todoList}
         handleSetDone={handleSetDone}
         handleRemove={handleRemove}
