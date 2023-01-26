@@ -34,4 +34,10 @@ export interface ITodo {
   id: string
 }
 
+export interface ITodoBlock {
+  text: string
+  img: string
+  todoType: 1 | 2 | 3
+}
+
 export type NotificationType = 'success' | 'info' | 'warning' | 'error'

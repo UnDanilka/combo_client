@@ -1,15 +1,13 @@
-import circle from '../../../assets/circle.png'
+import { ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 
-const TodoBlock = () => {
+const TodoBlock = ({ text, img, todoType }: ITodoBlock) => {
   return (
     <div className='block'>
       <div className='block_info'>
-        <div className='block_info_text'>
-          Let's test an ordinary todo list. There is nothing special, state management is in base react state.{' '}
-        </div>
+        <div className='block_info_text'>{text}</div>
         <div className='block_info_img'>
-          <img src={circle} alt='alt' className='block_info_img_content' />
+          <img src={img} alt='alt' className='block_info_img_content' />
         </div>
       </div>
       <Todo />
