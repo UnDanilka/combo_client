@@ -1,7 +1,7 @@
 import { ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 
-const TodoBlock = ({ text, img, todoType }: ITodoBlock) => {
+const TodoBlock = ({ text, img, label }: ITodoBlock) => {
   return (
     <div className='block'>
       <div className='block_info'>

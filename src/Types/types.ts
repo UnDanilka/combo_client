@@ -35,9 +35,18 @@ export interface ITodo {
 }
 
 export interface ITodoBlock {
+  label: string
   text: string
   img: string
-  todoType: 1 | 2 | 3
+}
+
+export interface ITabs {
+  elements: IElement[]
+}
+
+export interface IElement {
+  element: React.ReactElement
+  label: string
 }
 
 export type NotificationType = 'success' | 'info' | 'warning' | 'error'

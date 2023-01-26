@@ -1,0 +1,11 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  align-items: center;
+  &_nav {
+  }
+  &_content {
+    overflow: scroll;
+  }
+}

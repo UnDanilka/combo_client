@@ -1,28 +1,34 @@
 import TodoBlock from './TodoBlock/TodoBlock'
 import circle from '../../assets/circle.png'
 import { ITodoBlock } from '../../Types/types'
+import Tabs from '../Tabs/Tabs'
 
 const todoBlocksList: ITodoBlock[] = [
   {
+    label: 'State',
     text: 'Lets test an ordinary todo list. There is nothing special, state management is in base react state.',
     img: circle,
-    todoType: 1,
   },
   {
-    text: 'Lets test an ordinary todo list. There is nothing special, state management is in base react state.',
+    label: 'Server',
+    text: 'Text about a server',
     img: circle,
-    todoType: 2,
+  },
+  {
+    label: 'Blockchain',
+    text: 'Text about a blockchain',
+    img: circle,
   },
 ]
+
+const tabsElements = todoBlocksList.map(({ text, img, label }) => {
+  return { element: <TodoBlock text={text} img={img} label={label} />, label }
+})
 
 const Todos = () => {
   return (
     <div className='todos'>
-      <div className='todos_content'>
-        {todoBlocksList.map(({ text, img, todoType }) => {
-          return <TodoBlock text={text} img={img} todoType={todoType} />
-        })}
-      </div>
+      <Tabs elements={tabsElements} />
     </div>
   )
 }

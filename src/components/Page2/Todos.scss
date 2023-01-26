@@ -4,10 +4,7 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  overflow: scroll;
-  &_content {
-    width: 100%;
+  overflow: hidden;
 
-    @import './TodoBlock/TodoBlock.scss';
-  }
+  @import './TodoBlock/TodoBlock.scss';
 }
