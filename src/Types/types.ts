@@ -33,6 +33,13 @@ export interface ITodo {
   done: boolean
   id: string
 }
+export interface ITodoItem {
+  value: string
+  done: boolean
+  id: string
+  handleSetDone: (id: string) => void
+  handleRemove: (id: string) => void
+}
 
 export interface ITodoBlock {
   label: string

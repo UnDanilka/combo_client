@@ -1,31 +1,17 @@
 import { Input } from 'antd'
 import { useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
-import { v4 as uuidv4 } from 'uuid'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { ITodo } from '../../../../Types/types'
-import openNotification from '../../../Notification/notification'
 
-const Todo = () => {
-  const { theme, todoList, handleUpdateTodoList } = useContext(ComboContext)
+const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove }: any) => {
+  const { theme } = useContext(ComboContext)
   const [inputValue, setInputValue] = useState('')
-
-  const handleAdd = () => {
-    if (inputValue === '') {
-      openNotification('error', 'Please enter a value')
-      return
-    }
-    const prevTodoList: ITodo[] = [...todoList]
-    prevTodoList.unshift({ value: inputValue, done: false, id: uuidv4() })
-
-    handleUpdateTodoList(prevTodoList)
-    setInputValue('')
-  }
 
   const handleEnterDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleAdd()
+      handleAdd(inputValue, setInputValue)
     }
   }
 
@@ -46,7 +32,10 @@ const Todo = () => {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => handleEnterDown(e)}
         />
-        <div onClick={handleAdd} className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}>
+        <div
+          onClick={() => handleAdd(inputValue, setInputValue)}
+          className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}
+        >
           <div className='todo_input_btn_text'>ADD</div>
         </div>
       </div>
@@ -57,7 +46,16 @@ const Todo = () => {
               <motion.div layout {...motionRules} className='todo_wrapper_items'>
                 <AnimatePresence>
                   {todoList.map(({ value, done, id }: ITodo) => {
-                    return <TodosItem value={value} done={done} id={id} key={id} />
+                    return (
+                      <TodosItem
+                        value={value}
+                        done={done}
+                        id={id}
+                        key={id}
+                        handleSetDone={handleSetDone}
+                        handleRemove={handleRemove}
+                      />
+                    )
                   })}
                 </AnimatePresence>
               </motion.div>
