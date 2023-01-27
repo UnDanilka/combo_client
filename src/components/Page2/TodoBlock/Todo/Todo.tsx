@@ -2,7 +2,7 @@ import { Input } from 'antd'
 import { useContext, useState } from 'react'
 import ComboContext from '../../../../Context/ComboContext'
 import TodosItem from './TodosItem/TodosItem'
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { ITodo, ITodoComponent } from '../../../../Types/types'
 import openNotification from '../../../Notification/notification'
 import { v4 as uuidv4 } from 'uuid'
@@ -54,7 +54,7 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodo
       <div className='todo_wrapper'>
         <AnimatePresence>
           {todoList.length > 0 && (
-            <AnimateSharedLayout>
+            <LayoutGroup>
               <motion.div layout {...motionRules} className='todo_wrapper_items' style={{ borderColor: color }}>
                 <AnimatePresence>
                   {todoList.map(({ value, done, id }: ITodo) => {
@@ -71,7 +71,7 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodo
                   })}
                 </AnimatePresence>
               </motion.div>
-            </AnimateSharedLayout>
+            </LayoutGroup>
           )}
         </AnimatePresence>
       </div>

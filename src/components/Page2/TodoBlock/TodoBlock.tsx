@@ -52,15 +52,29 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     }
   }
 
-  const handleSetDone = (id: string) => {
-    const prevTodoList = [...todoList]
-    const updatedTodoList = prevTodoList.map((todo: ITodo) => {
-      if (todo.id === id) {
-        return { ...todo, done: true }
-      }
-      return todo
-    })
-    handleUpdateTodoList(updatedTodoList)
+  const handleSetDone = () => {
+    switch (label) {
+      case 'state':
+        return (id: string) => {
+          const prevTodoList = [...todoList]
+          const updatedTodoList = prevTodoList.map((todo: ITodo) => {
+            if (todo.id === id) {
+              return { ...todo, done: true }
+            }
+            return todo
+          })
+          handleUpdateTodoList(updatedTodoList)
+        }
+        break
+      case 'server':
+        return () => {}
+        break
+      case 'blockchain':
+        return () => {}
+        break
+      default:
+        return () => {}
+    }
   }
 
   const handleRemove = (id: string) => {
@@ -81,7 +95,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       <Todo
         handleAdd={handleAdd()}
         todoList={currentTodoList()}
-        handleSetDone={handleSetDone}
+        handleSetDone={handleSetDone()}
         handleRemove={handleRemove}
         color={colors[label as keyof typeof colors]}
       />
