@@ -29,7 +29,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
 
   useEffect(() => {
-    getTodos().then((res) => setTodoListServer(res.todos))
+    getTodos().then((res) => setTodoListServer(res))
   }, [])
 
   const handleUpdateTheme = (type: string) => {

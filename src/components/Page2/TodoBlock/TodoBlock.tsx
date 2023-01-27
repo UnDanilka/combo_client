@@ -24,7 +24,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       case 'server':
         return async (todo: ITodo, setInputValue: (state: string) => void) => {
           const updatedTodoList = await addTodos(todo)
-          handleUpdateTodoListServer(updatedTodoList.todos)
+          handleUpdateTodoListServer(updatedTodoList)
           setInputValue('')
         }
         break
