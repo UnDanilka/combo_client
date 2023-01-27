@@ -1,5 +1,7 @@
 import { ITodo } from '../Types/types'
 
+const url = 'https://combo-server.onrender.com'
+
 const paramsBuilder = (body: any) => {
   return {
     method: 'POST',
@@ -18,24 +20,24 @@ const getData = async (url: string, params: any) => {
 }
 
 export const getTodos = async () => {
-  const todos = await getData('http://localhost:4000/todos', {})
+  const todos = await getData(`${url}/todos`, {})
   return todos
 }
 
 export const addTodos = async (todo: ITodo) => {
   const params = paramsBuilder(todo)
-  const updatedTodo = await getData('http://localhost:4000/add', params)
+  const updatedTodo = await getData(`${url}/add`, params)
   return updatedTodo
 }
 
 export const setDoneTodos = async (id: string) => {
   const params = paramsBuilder({ id })
-  const updatedTodo = await getData('http://localhost:4000/done', params)
+  const updatedTodo = await getData(`${url}/done`, params)
   return updatedTodo
 }
 
 export const removeTodos = async (id: string) => {
   const params = paramsBuilder({ id })
-  const updatedTodo = await getData('http://localhost:4000/delete', params)
+  const updatedTodo = await getData(`${url}/delete`, params)
   return updatedTodo
 }
