@@ -3,7 +3,7 @@ import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
-import { addTodos, setDoneTodos } from '../../../APIs/apis'
+import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
@@ -69,7 +69,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       case 'server':
         return async (id: string) => {
           const updatedTodoList = await setDoneTodos(id)
-          console.log(updatedTodoList)
           handleUpdateTodoListServer(updatedTodoList)
         }
         break
@@ -81,11 +80,28 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     }
   }
 
-  const handleRemove = (id: string) => {
-    const prevTodoList: ITodo[] = [...todoList]
-    const idx = prevTodoList.findIndex((item: ITodo) => item.id === id)
-    prevTodoList.splice(idx, 1)
-    handleUpdateTodoList(prevTodoList)
+  const handleRemove = () => {
+    switch (label) {
+      case 'state':
+        return (id: string) => {
+          const prevTodoList: ITodo[] = [...todoList]
+          const idx = prevTodoList.findIndex((item: ITodo) => item.id === id)
+          prevTodoList.splice(idx, 1)
+          handleUpdateTodoList(prevTodoList)
+        }
+        break
+      case 'server':
+        return async (id: string) => {
+          const updatedTodoList = await removeTodos(id)
+          handleUpdateTodoListServer(updatedTodoList)
+        }
+        break
+      case 'blockchain':
+        return () => {}
+        break
+      default:
+        return () => {}
+    }
   }
 
   return (
@@ -100,7 +116,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         handleAdd={handleAdd()}
         todoList={currentTodoList()}
         handleSetDone={handleSetDone()}
-        handleRemove={handleRemove}
+        handleRemove={handleRemove()}
         color={colors[label as keyof typeof colors]}
       />
     </div>
