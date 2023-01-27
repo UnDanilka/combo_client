@@ -1,39 +1,54 @@
 /* eslint-disable no-unreachable */
 import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
-import { v4 as uuidv4 } from 'uuid'
-import openNotification from '../../Notification/notification'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
+import { addTodos } from '../../../APIs/apis'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
-  const { todoList, handleUpdateTodoList } = useContext(ComboContext)
+  const { todoList, handleUpdateTodoList, todoListServer, handleUpdateTodoListServer } = useContext(ComboContext)
 
   const handleAdd = () => {
     switch (label) {
       case 'state':
-        return (inputValue: string, setInputValue: (state: string) => void) => {
-          if (inputValue === '') {
-            openNotification('error', 'Please enter a value')
-            return
-          }
+        return (todo: ITodo, setInputValue: (state: string) => void) => {
           const prevTodoList: ITodo[] = [...todoList]
-          prevTodoList.unshift({ value: inputValue, done: false, id: uuidv4() })
+          prevTodoList.unshift(todo)
 
           handleUpdateTodoList(prevTodoList)
           setInputValue('')
         }
         break
       case 'server':
-        return () => console.log('server')
+        return async (todo: ITodo, setInputValue: (state: string) => void) => {
+          const updatedTodoList = await addTodos(todo)
+          handleUpdateTodoListServer(updatedTodoList.todos)
+          setInputValue('')
+        }
         break
       case 'blockchain':
         return () => console.log('blockchain')
         break
       default:
         return () => console.log('default')
+    }
+  }
+
+  const currentTodoList = () => {
+    switch (label) {
+      case 'state':
+        return todoList
+        break
+      case 'server':
+        return todoListServer
+        break
+      case 'blockchain':
+        return []
+        break
+      default:
+        return []
     }
   }
 
@@ -65,7 +80,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       </div>
       <Todo
         handleAdd={handleAdd()}
-        todoList={todoList}
+        todoList={currentTodoList()}
         handleSetDone={handleSetDone}
         handleRemove={handleRemove}
         color={colors[label as keyof typeof colors]}

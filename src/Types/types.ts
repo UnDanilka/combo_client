@@ -48,7 +48,7 @@ export interface ITodoBlock {
 }
 
 export interface ITodoComponent {
-  handleAdd: (inputValue: string, setInputValue: (state: string) => void) => void
+  handleAdd: (todo: ITodo, setInputValue: (state: string) => void) => void
   handleRemove: (id: string) => void
   handleSetDone: (id: string) => void
   todoList: ITodo[]

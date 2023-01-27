@@ -4,6 +4,15 @@ import ComboContext from '../../../../Context/ComboContext'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import { ITodo, ITodoComponent } from '../../../../Types/types'
+import openNotification from '../../../Notification/notification'
+import { v4 as uuidv4 } from 'uuid'
+
+const motionRules = {
+  initial: { y: -100 },
+  animate: { y: 0 },
+  exit: { y: -100 },
+  transition: { duration: 0.5 },
+}
 
 const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodoComponent) => {
   const { theme } = useContext(ComboContext)
@@ -11,15 +20,17 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodo
 
   const handleEnterDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleAdd(inputValue, setInputValue)
+      handleTodoValidate()
     }
   }
 
-  const motionRules = {
-    initial: { y: -100 },
-    animate: { y: 0 },
-    exit: { y: -100 },
-    transition: { duration: 0.5 },
+  const handleTodoValidate = () => {
+    if (inputValue === '') {
+      openNotification('error', 'Please enter a value')
+      return
+    }
+    const todo = { value: inputValue, done: false, id: uuidv4() }
+    handleAdd(todo, setInputValue)
   }
 
   return (
@@ -33,7 +44,7 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodo
           onKeyDown={(e) => handleEnterDown(e)}
         />
         <div
-          onClick={() => handleAdd(inputValue, setInputValue)}
+          onClick={handleTodoValidate}
           className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}
           style={{ backgroundColor: color }}
         >
