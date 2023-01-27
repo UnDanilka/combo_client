@@ -22,3 +22,18 @@ export const addTodos = async (todo: ITodo) => {
 
   return updatedTodo
 }
+export const setDoneTodos = async (id: string) => {
+  const params = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id }),
+  }
+
+  const updatedTodo = await fetch('http://localhost:4000/done', params)
+    .then((res) => res.json())
+    .then((res) => res)
+
+  return updatedTodo
+}

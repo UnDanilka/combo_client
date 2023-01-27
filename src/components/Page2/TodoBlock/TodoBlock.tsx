@@ -3,7 +3,7 @@ import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
-import { addTodos } from '../../../APIs/apis'
+import { addTodos, setDoneTodos } from '../../../APIs/apis'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
@@ -67,7 +67,11 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         }
         break
       case 'server':
-        return () => {}
+        return async (id: string) => {
+          const updatedTodoList = await setDoneTodos(id)
+          console.log(updatedTodoList)
+          handleUpdateTodoListServer(updatedTodoList)
+        }
         break
       case 'blockchain':
         return () => {}
