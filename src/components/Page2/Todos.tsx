@@ -6,17 +6,17 @@ import Tabs from '../Tabs/Tabs'
 const todoBlocksList: ITodoBlock[] = [
   {
     label: 'state',
-    text: 'Lets test an ordinary todo list. There is nothing special, state management is in base react state.',
+    text: 'Lets test an ordinary todo list. There is nothing special, state management is in the base react state.',
     img: circle,
   },
   {
     label: 'server',
-    text: 'Text about a server',
+    text: 'This is todo list that works with server support. Server works with node js and hosted on the render platform',
     img: circle,
   },
   {
     label: 'blockchain',
-    text: 'Text about a blockchain',
+    text: 'This todo list works on the blockchain. It contains gnosis chiado test net and needs metamask to be installed. also it needs to get configuration for the metamask for the chiado chain settings and to get some xdai for the gas paying. Everything you can do using links below',
     img: circle,
   },
 ]

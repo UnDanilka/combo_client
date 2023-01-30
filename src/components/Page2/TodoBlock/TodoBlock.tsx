@@ -19,6 +19,22 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     todoListBC,
   } = useContext(ComboContext)
 
+  const currentTodoList = () => {
+    switch (label) {
+      case 'state':
+        return todoList
+        break
+      case 'server':
+        return todoListServer
+        break
+      case 'blockchain':
+        return todoListBC
+        break
+      default:
+        return []
+    }
+  }
+
   const handleAdd = () => {
     switch (label) {
       case 'state':
@@ -48,22 +64,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         break
       default:
         return () => console.log('default')
-    }
-  }
-
-  const currentTodoList = () => {
-    switch (label) {
-      case 'state':
-        return todoList
-        break
-      case 'server':
-        return todoListServer
-        break
-      case 'blockchain':
-        return todoListBC
-        break
-      default:
-        return []
     }
   }
 
