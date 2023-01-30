@@ -4,11 +4,21 @@ import Todo from './Todo/Todo'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
+import { Button } from 'antd'
+import { addTodoStart, connectWallet, deleteTodoBC, getTodosBC, updateTodoBC } from '../../../Blockchain/methods'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
-  const { todoList, handleUpdateTodoList, todoListServer, handleUpdateTodoListServer } = useContext(ComboContext)
+  const {
+    todoList,
+    handleUpdateTodoList,
+    todoListServer,
+    handleUpdateTodoListServer,
+    handleUpdateAccount,
+    todoListBC,
+    handleUpdateTodoListBC,
+  } = useContext(ComboContext)
 
   const handleAdd = () => {
     switch (label) {
@@ -29,7 +39,14 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         }
         break
       case 'blockchain':
-        return () => console.log('blockchain')
+        return async (todo: ITodo, setInputValue: (state: string) => void) => {
+          console.log(todo)
+          await addTodoStart(todo)
+          const updatedTodos = await getTodosBC()
+          console.log(updatedTodos)
+          handleUpdateTodoListBC(updatedTodos)
+          setInputValue('')
+        }
         break
       default:
         return () => console.log('default')
@@ -45,7 +62,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         return todoListServer
         break
       case 'blockchain':
-        return []
+        return todoListBC
         break
       default:
         return []
@@ -73,7 +90,12 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         }
         break
       case 'blockchain':
-        return () => {}
+        return async (id: string) => {
+          await updateTodoBC(id)
+          const updatedTodos = await getTodosBC()
+          console.log(updatedTodos)
+          handleUpdateTodoListBC(updatedTodos)
+        }
         break
       default:
         return () => {}
@@ -97,11 +119,21 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         }
         break
       case 'blockchain':
-        return () => {}
+        return async (id: string) => {
+          await deleteTodoBC(id)
+          const updatedTodos = await getTodosBC()
+          console.log(updatedTodos)
+          handleUpdateTodoListBC(updatedTodos)
+        }
         break
       default:
         return () => {}
     }
+  }
+
+  const handleConnectWallet = async () => {
+    const account = await connectWallet()
+    handleUpdateAccount(account)
   }
 
   return (
@@ -110,6 +142,11 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         <div className='block_info_text'>{text}</div>
         <div className='block_info_img'>
           <img src={img} alt='alt' className='block_info_img_content' />
+        </div>
+      </div>
+      <div className='block_chain'>
+        <div className='block_chain_connect'>
+          <Button onClick={handleConnectWallet}>Connect wallet</Button>
         </div>
       </div>
       <Todo
