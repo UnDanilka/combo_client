@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { getTodos } from '../APIs/apis'
-import { getTodosBC } from '../Blockchain/methods'
+import { getTodoContract, getTodosBC } from '../Blockchain/methods'
 import { IComboProvider, ITodo } from '../Types/types'
 
 const todoDefault = { value: '', id: '', done: false }
@@ -21,7 +21,6 @@ const ComboContext = createContext({
   todoListServer: [todoDefault],
   handleUpdateTodoListServer: setTodoListDefault,
   todoListBC: [todoDefault],
-  handleUpdateTodoListBC: setTodoListDefault,
   isDrawer: false,
   handleUpdateIsDrawer: (is: boolean) => {},
   links: [{ title: '', link: '' }],
@@ -34,6 +33,12 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
+
+  useEffect(() => {
+    getTodoContract().on('TodosUpdate', (e) => {
+      setTodoListBC(e)
+    })
+  }, [])
 
   useEffect(() => {
     getTodos().then((res) => setTodoListServer(res))
@@ -61,9 +66,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const handleUpdateTodoListServer = (props: ITodo[]) => {
     setTodoListServer(props)
   }
-  const handleUpdateTodoListBC = (props: ITodo[]) => {
-    setTodoListBC(props)
-  }
+
   const handleUpdateIsDrawer = (is: boolean) => {
     setIsDrawer(is)
   }
@@ -81,7 +84,6 @@ export const ComboProvider = ({ children }: IComboProvider) => {
         todoListServer,
         handleUpdateTodoListServer,
         todoListBC,
-        handleUpdateTodoListBC,
         handleUpdateAccount,
       }}
     >

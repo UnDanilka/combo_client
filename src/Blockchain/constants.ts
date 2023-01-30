@@ -1,4 +1,4 @@
 import todo from './Todo.json'
 
 export const todoABI = todo.abi
-export const todoAddress = '0xFC9f70F206C340E2e78FE4B27C37f0BCC1c36Ea2'
+export const todoAddress = '0x3FB57d3759F64ab3EC44b9F71204B1F0FABC25A0'

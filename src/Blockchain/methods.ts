@@ -33,9 +33,9 @@ export const getTodosBC = async () => {
   return todos
 }
 
-export const addTodoStart = async ({ id, value }: ITodo) => {
+export const addTodo = async ({ id, value }: ITodo) => {
   const todoContract = getTodoContract()
-  const addTodosHash = await todoContract.addTodoStart(id, value)
+  const addTodosHash = await todoContract.addTodo(id, value)
 
   await addTodosHash.wait()
   console.log(addTodosHash)

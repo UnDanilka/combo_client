@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
 import { Button } from 'antd'
-import { addTodoStart, connectWallet, deleteTodoBC, getTodosBC, updateTodoBC } from '../../../Blockchain/methods'
+import { addTodo, connectWallet, deleteTodoBC, getTodosBC, updateTodoBC } from '../../../Blockchain/methods'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
@@ -17,7 +17,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     handleUpdateTodoListServer,
     handleUpdateAccount,
     todoListBC,
-    handleUpdateTodoListBC,
   } = useContext(ComboContext)
 
   const handleAdd = () => {
@@ -41,10 +40,9 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       case 'blockchain':
         return async (todo: ITodo, setInputValue: (state: string) => void) => {
           console.log(todo)
-          await addTodoStart(todo)
+          await addTodo(todo)
           const updatedTodos = await getTodosBC()
           console.log(updatedTodos)
-          handleUpdateTodoListBC(updatedTodos)
           setInputValue('')
         }
         break
@@ -94,7 +92,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
           await updateTodoBC(id)
           const updatedTodos = await getTodosBC()
           console.log(updatedTodos)
-          handleUpdateTodoListBC(updatedTodos)
         }
         break
       default:
@@ -123,7 +120,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
           await deleteTodoBC(id)
           const updatedTodos = await getTodosBC()
           console.log(updatedTodos)
-          handleUpdateTodoListBC(updatedTodos)
         }
         break
       default:
