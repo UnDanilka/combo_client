@@ -35,9 +35,9 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
 
   useEffect(() => {
-    getTodoContract().on('TodosUpdate', (e) => {
-      setTodoListBC(e)
-    })
+    // getTodoContract().on('TodosUpdate', (e) => {
+    //   setTodoListBC(e)
+    // })
   }, [])
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
 
       setTodoListBC(todos)
     }
-    getTodosFromContract()
+    // getTodosFromContract()
   }, [currentAccount])
 
   const handleUpdateTheme = (type: string) => {
