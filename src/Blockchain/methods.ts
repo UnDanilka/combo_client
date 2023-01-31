@@ -1,4 +1,5 @@
 import { ethers } from 'ethers'
+import openNotification from '../components/Notification/notification'
 import { ITodo } from '../Types/types'
 import { todoABI, todoAddress } from './constants'
 
@@ -7,7 +8,7 @@ export const { ethereum } = window
 export const connectWallet = async () => {
   try {
     if (!ethereum) {
-      return alert('Wallet is not connected')
+      return openNotification('error', 'Wallet is not installed')
     } else {
       const address = await ethereum.request({
         method: 'eth_requestAccounts',
@@ -47,6 +48,7 @@ export const handleConnectGnosis = () => {
 export const getTodoContract = () => {
   const provider = new ethers.providers.Web3Provider(ethereum)
   const signer = provider.getSigner()
+
   const todoContract = new ethers.Contract(todoAddress, todoABI, signer)
 
   return todoContract

@@ -24,6 +24,7 @@ const ComboContext = createContext({
   isDrawer: false,
   handleUpdateIsDrawer: (is: boolean) => {},
   links: [{ title: '', link: '' }],
+  currentAccount: '',
 })
 
 export const ComboProvider = ({ children }: IComboProvider) => {
@@ -34,7 +35,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
-  const [provider] = useState<any>(ethereum)
+  const [provider] = useState(ethereum)
 
   useEffect(() => {
     if (provider) {
@@ -91,6 +92,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
         handleUpdateTodoListServer,
         todoListBC,
         handleUpdateAccount,
+        currentAccount,
       }}
     >
       {children}

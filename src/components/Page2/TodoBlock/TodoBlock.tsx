@@ -12,12 +12,16 @@ import {
   handleConnectGnosis,
   updateTodoBC,
 } from '../../../Blockchain/methods'
+import openNotification from '../../Notification/notification'
+
 import { Tooltip } from 'antd'
 import { ReactComponent as Metamask } from '../../../assets/metamask.svg'
 import { ReactComponent as Gnosis } from '../../../assets/gnosis.svg'
 import { ReactComponent as XDai } from '../../../assets/xDai.svg'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
+
+export const { ethereum } = window
 
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
   const {
@@ -27,6 +31,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     handleUpdateTodoListServer,
     handleUpdateAccount,
     todoListBC,
+    currentAccount,
   } = useContext(ComboContext)
 
   const currentTodoList = () => {
@@ -65,11 +70,16 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         break
       case 'blockchain':
         return async (todo: ITodo, setInputValue: (state: string) => void) => {
-          console.log(todo)
-          await addTodo(todo)
-          const updatedTodos = await getTodosBC()
-          console.log(updatedTodos)
-          setInputValue('')
+          if (currentAccount) {
+            console.log(todo)
+            await addTodo(todo)
+            const updatedTodos = await getTodosBC()
+            console.log(updatedTodos)
+            setInputValue('')
+          } else {
+            openNotification('error', 'Please connect wallet')
+            setInputValue('')
+          }
         }
         break
       default:
