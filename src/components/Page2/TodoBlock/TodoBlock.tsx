@@ -13,6 +13,9 @@ import {
   updateTodoBC,
 } from '../../../Blockchain/methods'
 import { Tooltip } from 'antd'
+import { ReactComponent as Metamask } from '../../../assets/metamask.svg'
+import { ReactComponent as Gnosis } from '../../../assets/gnosis.svg'
+import { ReactComponent as XDai } from '../../../assets/xDai.svg'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
@@ -153,6 +156,9 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
             <div className='block_chain_btn' onClick={handleConnectGnosis}>
               Gnosis config
             </div>
+            <div className='block_chain_btn-small' onClick={handleConnectGnosis}>
+              <Gnosis />
+            </div>
           </Tooltip>
           <Tooltip
             placement='topLeft'
@@ -161,11 +167,17 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
             <a className='block_chain_btn' rel='noreferrer' target='_blank' href='https://gnosisfaucet.com/'>
               XDai faucet
             </a>
+            <a className='block_chain_btn-small' rel='noreferrer' target='_blank' href='https://gnosisfaucet.com/'>
+              <XDai />
+            </a>
           </Tooltip>
 
           <Tooltip placement='topLeft' title={'Connect metamask to the dapp'}>
             <div className='block_chain_btn' onClick={handleConnectWallet}>
               Connect wallet
+            </div>
+            <div className='block_chain_btn-small' onClick={handleConnectWallet}>
+              <Metamask />
             </div>
           </Tooltip>
         </div>

@@ -28,14 +28,24 @@
   &_chain {
     display: flex;
     gap: 10px;
-    width: 600px;
+    max-width: 600px;
     &_btn {
+      display: flex;
       padding: 10px;
       border-radius: 20px;
       background-color: rgba(53, 144, 136, 0.329);
       color: white;
       transition: all 0.3s ease;
       text-decoration: none;
+      &:hover {
+        cursor: pointer;
+        opacity: 70%;
+      }
+    }
+    &_btn-small {
+      display: none;
+      width: 30px;
+      height: 30px;
       &:hover {
         cursor: pointer;
         opacity: 70%;
@@ -52,5 +62,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .block_chain_btn-small {
+    display: flex;
+  }
+  .block_chain_btn {
+    display: none;
   }
 }
