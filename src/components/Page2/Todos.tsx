@@ -16,7 +16,7 @@ const todoBlocksList: ITodoBlock[] = [
   },
   {
     label: 'blockchain',
-    text: 'This todo list works on the blockchain. It contains gnosis chiado test net and needs metamask to be installed. Also it needs to get configuration for the metamask for the chiado chain settings and to get some xDai for the gas paying. Everything you can do using links down below',
+    text: 'This todo list works on the blockchain. It contains gnosis chiado test net and needs metamask to be installed and connected. Also it needs to get configuration for the metamask for the chiado chain settings and to get some xDai for the gas paying. Everything you can do using links down below',
     img: circle,
   },
 ]

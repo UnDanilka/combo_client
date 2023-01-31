@@ -19,6 +19,31 @@ export const connectWallet = async () => {
   }
 }
 
+export const handleConnectGnosis = () => {
+  const testNetParams = [
+    {
+      chainId: '0x27D8',
+      chainName: 'Chiado',
+      rpcUrls: ['https://rpc.chiadochain.net'],
+      nativeCurrency: {
+        name: 'Chiado xDAI',
+        symbol: 'xDAI',
+        decimals: 18,
+      },
+      blockExplorerUrls: ['https://blockscout.chiadochain.net'],
+    },
+  ]
+
+  ethereum
+    .request({
+      method: 'wallet_addEthereumChain',
+      params: testNetParams,
+    })
+    .catch((e: Error) => {
+      console.log(e)
+    })
+}
+
 export const getTodoContract = () => {
   const provider = new ethers.providers.Web3Provider(ethereum)
   const signer = provider.getSigner()

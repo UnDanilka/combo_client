@@ -30,7 +30,7 @@ const Contacts = () => {
               <contactItem.icon />
             </div>
             {contactItem.link ? (
-              <a href={contactItem.link} className='contact_link'>
+              <a href={contactItem.link} rel='noreferrer' target='_blank' className='contact_link'>
                 {contactItem.title}
               </a>
             ) : (

@@ -1,7 +1,7 @@
 .block {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
   align-items: center;
   &_info {
     display: flex;
@@ -17,6 +17,24 @@
       height: 200px;
       &_content {
         height: 100%;
+      }
+    }
+  }
+
+  &_chain {
+    display: flex;
+    gap: 10px;
+    width: 500px;
+    &_btn {
+      padding: 10px;
+      border-radius: 20px;
+      background-color: rgba(53, 144, 136, 0.329);
+      color: white;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+        opacity: 70%;
       }
     }
   }
