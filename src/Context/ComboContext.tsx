@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from 'react'
 import { getTodos } from '../APIs/apis'
 import { getTodoContract, getTodosBC } from '../Blockchain/methods'
 import { IComboProvider, ITodo } from '../Types/types'
-import detectEthereumProvider from '@metamask/detect-provider'
 
 const todoDefault = { value: '', id: '', done: false }
 const setTodoListDefault = (props: ITodo[]) => {}
