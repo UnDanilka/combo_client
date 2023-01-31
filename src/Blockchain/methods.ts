@@ -1,15 +1,18 @@
 import { ethers } from 'ethers'
 import { ITodo } from '../Types/types'
 import { todoABI, todoAddress } from './constants'
+import detectEthereumProvider from '@metamask/detect-provider'
 
 export const { ethereum } = window
 
 export const connectWallet = async () => {
+  const provider: any = await detectEthereumProvider()
+  console.log(provider, 'test')
   try {
-    if (!ethereum) {
+    if (!provider) {
       return alert('Wallet is not connected')
     } else {
-      const address = await ethereum.request({
+      const address = await provider.request({
         method: 'eth_requestAccounts',
       })
       return address[0]
