@@ -28,21 +28,14 @@ const ComboContext = createContext({
 })
 
 export const ComboProvider = ({ children }: IComboProvider) => {
+  const { ethereum } = window
   const [theme, setTheme] = useState<string>('light')
   const [todoList, setTodoList] = useState<ITodo[]>([])
   const [todoListServer, setTodoListServer] = useState<ITodo[]>([])
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
-  const [provider, setProvider] = useState<any>()
-
-  useEffect(() => {
-    const getProvider = async () => {
-      const metamaskProvider = await detectEthereumProvider()
-      setProvider(metamaskProvider)
-    }
-    getProvider()
-  }, [])
+  const [provider] = useState<any>(ethereum)
 
   useEffect(() => {
     if (provider) {
