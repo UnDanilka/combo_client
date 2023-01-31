@@ -38,7 +38,7 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [provider] = useState(ethereum)
 
   useEffect(() => {
-    if (provider) {
+    if (provider && currentAccount) {
       getTodoContract().on('TodosUpdate', (todos, address) => {
         if (address === currentAccount) {
           setTodoListBC(todos)
