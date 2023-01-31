@@ -39,11 +39,13 @@ export const ComboProvider = ({ children }: IComboProvider) => {
 
   useEffect(() => {
     if (provider) {
-      getTodoContract().on('TodosUpdate', (e) => {
-        setTodoListBC(e)
+      getTodoContract().on('TodosUpdate', (todos, address) => {
+        if (address === currentAccount) {
+          setTodoListBC(todos)
+        }
       })
     }
-  }, [provider])
+  }, [currentAccount, provider])
 
   useEffect(() => {
     getTodos().then((res) => setTodoListServer(res))
