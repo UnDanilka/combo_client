@@ -163,7 +163,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
             </a>
           </Tooltip>
 
-          <Tooltip placement='topLeft' title={''}>
+          <Tooltip placement='topLeft' title={'Connect metamask to the dapp'}>
             <div className='block_chain_btn' onClick={handleConnectWallet}>
               Connect wallet
             </div>
