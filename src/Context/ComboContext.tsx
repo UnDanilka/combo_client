@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import { getTodos } from '../APIs/apis'
 import { getTodoContract, getTodosBC } from '../Blockchain/methods'
 import { IComboProvider, ITodo } from '../Types/types'
+import detectEthereumProvider from '@metamask/detect-provider'
 
 const todoDefault = { value: '', id: '', done: false }
 const setTodoListDefault = (props: ITodo[]) => {}
@@ -33,26 +34,39 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
+  const [provider, setProvider] = useState<any>()
 
   useEffect(() => {
-    // getTodoContract().on('TodosUpdate', (e) => {
-    //   setTodoListBC(e)
-    // })
+    const getProvider = async () => {
+      const metamaskProvider = await detectEthereumProvider()
+      setProvider(metamaskProvider)
+    }
+    getProvider()
   }, [])
+
+  useEffect(() => {
+    if (provider) {
+      getTodoContract().on('TodosUpdate', (e) => {
+        setTodoListBC(e)
+      })
+    }
+  }, [provider])
 
   useEffect(() => {
     getTodos().then((res) => setTodoListServer(res))
   }, [])
 
   useEffect(() => {
-    const getTodosFromContract = async () => {
-      const todos = await getTodosBC()
-      console.log(todos)
+    if (provider) {
+      const getTodosFromContract = async () => {
+        const todos = await getTodosBC()
+        console.log(todos)
 
-      setTodoListBC(todos)
+        setTodoListBC(todos)
+      }
+      getTodosFromContract()
     }
-    // getTodosFromContract()
-  }, [currentAccount])
+  }, [currentAccount, provider])
 
   const handleUpdateTheme = (type: string) => {
     setTheme(type)
