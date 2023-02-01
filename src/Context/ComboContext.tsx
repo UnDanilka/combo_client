@@ -38,12 +38,6 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
 
   useEffect(() => {
-    ethereum.on('accountsChanged', function (accounts: string[]) {
-      setCurrentAccount(accounts[0])
-    })
-  }, [ethereum])
-
-  useEffect(() => {
     if (ethereum && currentAccount) {
       console.log('hi')
       getTodoContract().on('TodosUpdate', (todos, address) => {
@@ -61,6 +55,9 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   }, [currentAccount, ethereum])
 
   useEffect(() => {
+    ethereum.on('accountsChanged', function (accounts: string[]) {
+      setCurrentAccount(accounts[0])
+    })
     const getCurrentAccount = async () => {
       const provider = new ethers.providers.Web3Provider(ethereum)
       const list = await provider.listAccounts()
