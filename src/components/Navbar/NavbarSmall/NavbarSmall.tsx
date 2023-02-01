@@ -2,6 +2,7 @@ import Theme from '../Theme/Theme'
 import { MenuOutlined } from '@ant-design/icons'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
+import Spinner from '../Spinner/Spinner'
 
 const NavbarSmall = () => {
   const { theme, handleUpdateIsDrawer } = useContext(ComboContext)
@@ -22,6 +23,7 @@ const NavbarSmall = () => {
         </div>
       </div>
       <Theme />
+      <Spinner />
       <div className='navbar-small_divider' />
     </div>
   )

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ComboContext from '../../Context/ComboContext'
 import NavbarSmall from './NavbarSmall/NavbarSmall'
+import Spinner from './Spinner/Spinner'
 import Theme from './Theme/Theme'
 
 const Navbar = () => {
@@ -45,6 +46,7 @@ const Navbar = () => {
             })}
           </div>
           <Theme />
+          <Spinner />
           <div className='navbar_divider' />
         </div>
       ) : (
