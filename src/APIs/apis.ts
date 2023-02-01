@@ -1,3 +1,4 @@
+import openNotification from '../components/Notification/notification'
 import { ITodo } from '../Types/types'
 
 const url = 'https://combo-server.onrender.com'
@@ -16,7 +17,9 @@ const getData = async (url: string, params: any) => {
   const updatedTodo = await fetch(url, params)
     .then((res) => res.json())
     .then((res) => res)
-  return updatedTodo
+    .catch((err) => openNotification('error', 'Server error'))
+
+  return updatedTodo || {}
 }
 
 export const getTodos = async () => {
