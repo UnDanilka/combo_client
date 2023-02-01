@@ -4,13 +4,10 @@ import Todo from './Todo/Todo'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
-import { addTodo, connectWallet, deleteTodoBC, handleConnectGnosis, updateTodoBC } from '../../../Blockchain/methods'
+import { addTodo, deleteTodoBC, updateTodoBC } from '../../../Blockchain/methods'
 import openNotification from '../../Notification/notification'
 
-import { Tooltip } from 'antd'
-import { ReactComponent as Metamask } from '../../../assets/metamask.svg'
-import { ReactComponent as Gnosis } from '../../../assets/gnosis.svg'
-import { ReactComponent as XDai } from '../../../assets/xDai.svg'
+import BlockchainConnect from './BlockchainConnect/BlockchainConnect'
 
 const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '#38b1489a' }
 
@@ -22,7 +19,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     handleUpdateTodoList,
     todoListServer,
     handleUpdateTodoListServer,
-    handleUpdateAccount,
     todoListBC,
     currentAccount,
     handleUpdateIsSpinner,
@@ -148,14 +144,6 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     }
   }
 
-  const handleConnectWallet = async () => {
-    handleUpdateIsSpinner(true)
-    const account = await connectWallet()
-    handleUpdateIsSpinner(false)
-
-    handleUpdateAccount(account)
-  }
-
   return (
     <div className='block'>
       <div className='block_info'>
@@ -164,38 +152,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
           <img src={img} alt='alt' className='block_info_img_content' />
         </div>
       </div>
-      {label === 'blockchain' && (
-        <div className='block_chain'>
-          <Tooltip placement='topLeft' title={'Metamask will install all the chiado chain configurations'}>
-            <div className='block_chain_btn' onClick={handleConnectGnosis}>
-              Gnosis config
-            </div>
-            <div className='block_chain_btn-small' onClick={handleConnectGnosis}>
-              <Gnosis />
-            </div>
-          </Tooltip>
-          <Tooltip
-            placement='topLeft'
-            title={'In the network field chose Chiado Testnet(xDai) and then paste your wallet address'}
-          >
-            <a className='block_chain_btn' rel='noreferrer' target='_blank' href='https://gnosisfaucet.com/'>
-              XDai faucet
-            </a>
-            <a className='block_chain_btn-small' rel='noreferrer' target='_blank' href='https://gnosisfaucet.com/'>
-              <XDai />
-            </a>
-          </Tooltip>
-
-          <Tooltip placement='topLeft' title={'Connect metamask to the dapp'}>
-            <div className='block_chain_btn' onClick={handleConnectWallet}>
-              Connect wallet
-            </div>
-            <div className='block_chain_btn-small' onClick={handleConnectWallet}>
-              <Metamask />
-            </div>
-          </Tooltip>
-        </div>
-      )}
+      {label === 'blockchain' && <BlockchainConnect />}
       <Todo
         handleAdd={handleAdd()}
         todoList={currentTodoList()}

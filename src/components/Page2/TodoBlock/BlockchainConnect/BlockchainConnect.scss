@@ -1,0 +1,36 @@
+.blockchain-connect {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  &_btn {
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(53, 144, 136, 0.329);
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      opacity: 70%;
+    }
+  }
+  &_btn-small {
+    display: none;
+    width: 30px;
+    height: 30px;
+    &:hover {
+      cursor: pointer;
+      opacity: 70%;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .blockchain-connect_btn-small {
+    display: flex;
+  }
+  .blockchain-connect_btn {
+    display: none;
+  }
+}
