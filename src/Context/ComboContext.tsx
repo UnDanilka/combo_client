@@ -38,6 +38,12 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
 
   useEffect(() => {
+    ethereum.on('accountsChanged', function (accounts: string[]) {
+      setCurrentAccount(accounts[0])
+    })
+  }, [ethereum])
+
+  useEffect(() => {
     if (ethereum && currentAccount) {
       console.log('hi')
       getTodoContract().on('TodosUpdate', (todos, address) => {
