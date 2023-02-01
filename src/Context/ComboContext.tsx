@@ -14,8 +14,6 @@ const links = [
 ]
 
 const ComboContext = createContext({
-  theme: 'light',
-  handleUpdateTheme: (type: string) => {},
   handleUpdateAccount: (account: string) => {},
   todoList: [todoDefault],
   handleUpdateTodoList: setTodoListDefault,
@@ -32,7 +30,6 @@ const ComboContext = createContext({
 
 export const ComboProvider = ({ children }: IComboProvider) => {
   const { ethereum } = window
-  const [theme, setTheme] = useState<string>('light')
   const [todoList, setTodoList] = useState<ITodo[]>([])
   const [todoListServer, setTodoListServer] = useState<ITodo[]>([])
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
@@ -75,9 +72,6 @@ export const ComboProvider = ({ children }: IComboProvider) => {
     getTodos().then((res) => setTodoListServer(res))
   }, [])
 
-  const handleUpdateTheme = (type: string) => {
-    setTheme(type)
-  }
   const handleUpdateAccount = (account: string) => {
     setCurrentAccount(account)
   }
@@ -98,8 +92,6 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   return (
     <ComboContext.Provider
       value={{
-        theme,
-        handleUpdateTheme,
         todoList,
         handleUpdateTodoList,
         isDrawer,

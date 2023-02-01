@@ -1,11 +1,11 @@
 import { Input } from 'antd'
 import { useContext, useState } from 'react'
-import ComboContext from '../../../../Context/ComboContext'
 import TodosItem from './TodosItem/TodosItem'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { ITodo, ITodoComponent } from '../../../../Types/types'
 import openNotification from '../../../Notification/notification'
 import { v4 as uuidv4 } from 'uuid'
+import ThemeContext from '../../../../Context/ThemeContext'
 
 const motionRules = {
   initial: { y: -100 },
@@ -15,7 +15,7 @@ const motionRules = {
 }
 
 const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodoComponent) => {
-  const { theme } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
   const [inputValue, setInputValue] = useState('')
 
   const handleEnterDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

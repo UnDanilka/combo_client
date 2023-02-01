@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ComboContext from '../../Context/ComboContext'
+import ThemeContext from '../../Context/ThemeContext'
 import NavbarSmall from './NavbarSmall/NavbarSmall'
 import Spinner from './Spinner/Spinner'
 import Theme from './Theme/Theme'
 
 const Navbar = () => {
-  const { theme, links } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
+  const { links } = useContext(ComboContext)
   const [size, setSize] = useState('big')
 
   useEffect(() => {

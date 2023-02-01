@@ -3,9 +3,11 @@ import { MenuOutlined } from '@ant-design/icons'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import Spinner from '../Spinner/Spinner'
+import ThemeContext from '../../../Context/ThemeContext'
 
 const NavbarSmall = () => {
-  const { theme, handleUpdateIsDrawer } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
+  const { handleUpdateIsDrawer } = useContext(ComboContext)
 
   const handleOpenDrawer = () => {
     handleUpdateIsDrawer(true)
