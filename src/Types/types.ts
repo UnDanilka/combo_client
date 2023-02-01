@@ -8,6 +8,11 @@ export interface IContentItem {
   textFirst: boolean
   src: string[]
 }
+export interface IIMG {
+  imgWidth: number
+  imgHeight: number
+  src: string[]
+}
 
 export interface ISkillsItem {
   data: string[]

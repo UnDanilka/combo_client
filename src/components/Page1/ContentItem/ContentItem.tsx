@@ -1,11 +1,9 @@
-import { useContext } from 'react'
 import { IContentItem } from '../../../Types/types'
 import { motion } from 'framer-motion'
-import ThemeContext from '../../../Context/ThemeContext'
+import React from 'react'
+import IMG from './IMG/IMG'
 
 const ContentItem = ({ text, imgWidth, imgHeight, textFirst, src }: IContentItem) => {
-  const { theme } = useContext(ThemeContext)
-
   const MotionDiv = () => (
     <motion.div
       initial={{ y: 200 }}
@@ -14,11 +12,7 @@ const ContentItem = ({ text, imgWidth, imgHeight, textFirst, src }: IContentItem
       viewport={{ once: true }}
       className='main_content_item_img'
     >
-      <img
-        src={src.length > 1 ? (theme === 'light' ? src[0] : src[1]) : src[0]}
-        alt='fireSpot'
-        style={{ width: imgWidth, height: imgHeight }}
-      />
+      <IMG imgWidth={imgWidth} imgHeight={imgHeight} src={src} />
     </motion.div>
   )
 
@@ -39,4 +33,4 @@ const ContentItem = ({ text, imgWidth, imgHeight, textFirst, src }: IContentItem
   )
 }
 
-export default ContentItem
+export default React.memo(ContentItem)

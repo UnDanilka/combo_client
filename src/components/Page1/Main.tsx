@@ -38,8 +38,6 @@ const contentItemData = [
 const Main = () => {
   const { theme } = useContext(ThemeContext)
 
-  console.log('render main')
-
   return (
     <div className='main'>
       <div className='main_welcome'>
