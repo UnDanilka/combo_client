@@ -20,6 +20,8 @@
       width: 220px;
       &_content {
         height: 100%;
+      }
+      .spin {
         rotate: right;
         animation: spin 1s linear;
       }

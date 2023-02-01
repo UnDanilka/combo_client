@@ -1,7 +1,7 @@
 /* eslint-disable no-unreachable */
 import { IColors, ITodo, ITodoBlock } from '../../../Types/types'
 import Todo from './Todo/Todo'
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
 import { addTodo, deleteTodoBC, updateTodoBC } from '../../../Blockchain/methods'
@@ -14,6 +14,16 @@ const colors: IColors = { state: '#5059be9a', server: '#be50be9a', blockchain: '
 export const { ethereum } = window
 
 const TodoBlock = ({ text, img, label }: ITodoBlock) => {
+  const [loaded, setLoaded] = useState(false)
+
+  const imgDiv: any = useRef(null)
+
+  useEffect(() => {
+    if (loaded) {
+      imgDiv.current?.classList.add('spin')
+    }
+  }, [loaded])
+
   const {
     todoList,
     handleUpdateTodoList,
@@ -149,7 +159,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       <div className='block_info'>
         <div className='block_info_text'>{text}</div>
         <div className='block_info_img'>
-          <img src={img} alt='alt' className='block_info_img_content' />
+          <img src={img} alt='alt' className='block_info_img_content' ref={imgDiv} onLoad={() => setLoaded(true)} />
         </div>
       </div>
       {label === 'blockchain' && <BlockchainConnect />}
