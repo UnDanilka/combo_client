@@ -16,7 +16,7 @@ export const connectWallet = async () => {
       return address[0]
     }
   } catch (e) {
-    console.error(e)
+    openNotification('error', 'Error with wallet connecting')
   }
 }
 
@@ -41,7 +41,7 @@ export const handleConnectGnosis = () => {
       params: testNetParams,
     })
     .catch((e: Error) => {
-      console.log(e)
+      openNotification('error', e.message)
     })
 }
 
@@ -65,21 +65,16 @@ export const addTodo = async ({ id, value }: ITodo) => {
   const addTodosHash = await todoContract.addTodo(id, value)
 
   await addTodosHash.wait()
-  console.log(addTodosHash)
 }
 export const deleteTodoBC = async (id: string) => {
   const todoContract = getTodoContract()
-  console.log(todoContract)
   const deleteTodosHash = await todoContract.deleteTodo(id)
 
   await deleteTodosHash.wait()
-  console.log(deleteTodosHash)
 }
 export const updateTodoBC = async (id: string) => {
   const todoContract = getTodoContract()
-  console.log(todoContract)
   const updateTodosHash = await todoContract.updateTodo(id)
 
   await updateTodosHash.wait()
-  console.log(updateTodosHash)
 }

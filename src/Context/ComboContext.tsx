@@ -24,6 +24,8 @@ const ComboContext = createContext({
   todoListBC: [todoDefault],
   isDrawer: false,
   handleUpdateIsDrawer: (is: boolean) => {},
+  isSpinner: false,
+  handleUpdateIsSpinner: (is: boolean) => {},
   links: [{ title: '', link: '' }],
   currentAccount: '',
 })
@@ -36,18 +38,19 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
+  const [isSpinner, setIsSpinner] = useState<boolean>(false)
 
   useEffect(() => {
     if (ethereum && currentAccount) {
-      console.log('hi')
       getTodoContract().on('TodosUpdate', (todos, address) => {
         if (address === currentAccount) {
           setTodoListBC(todos)
         }
       })
       const getTodosFromContract = async () => {
+        setIsSpinner(true)
         const todos = await getTodosBC()
-        console.log(todos)
+        setIsSpinner(false)
         setTodoListBC(todos)
       }
       getTodosFromContract()
@@ -88,6 +91,9 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const handleUpdateIsDrawer = (is: boolean) => {
     setIsDrawer(is)
   }
+  const handleUpdateIsSpinner = (is: boolean) => {
+    setIsSpinner(is)
+  }
 
   return (
     <ComboContext.Provider
@@ -98,6 +104,8 @@ export const ComboProvider = ({ children }: IComboProvider) => {
         handleUpdateTodoList,
         isDrawer,
         handleUpdateIsDrawer,
+        isSpinner,
+        handleUpdateIsSpinner,
         links,
         todoListServer,
         handleUpdateTodoListServer,

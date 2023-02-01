@@ -4,14 +4,7 @@ import Todo from './Todo/Todo'
 import { useContext } from 'react'
 import ComboContext from '../../../Context/ComboContext'
 import { addTodos, removeTodos, setDoneTodos } from '../../../APIs/apis'
-import {
-  addTodo,
-  connectWallet,
-  deleteTodoBC,
-  getTodosBC,
-  handleConnectGnosis,
-  updateTodoBC,
-} from '../../../Blockchain/methods'
+import { addTodo, connectWallet, deleteTodoBC, handleConnectGnosis, updateTodoBC } from '../../../Blockchain/methods'
 import openNotification from '../../Notification/notification'
 
 import { Tooltip } from 'antd'
@@ -32,6 +25,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
     handleUpdateAccount,
     todoListBC,
     currentAccount,
+    handleUpdateIsSpinner,
   } = useContext(ComboContext)
 
   const currentTodoList = () => {
@@ -63,7 +57,9 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         break
       case 'server':
         return async (todo: ITodo, setInputValue: (state: string) => void) => {
+          handleUpdateIsSpinner(true)
           const updatedTodoList = await addTodos(todo)
+          handleUpdateIsSpinner(false)
           handleUpdateTodoListServer(updatedTodoList)
           setInputValue('')
         }
@@ -71,10 +67,9 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
       case 'blockchain':
         return async (todo: ITodo, setInputValue: (state: string) => void) => {
           if (currentAccount) {
-            console.log(todo)
+            handleUpdateIsSpinner(true)
             await addTodo(todo)
-            const updatedTodos = await getTodosBC()
-            console.log(updatedTodos)
+            handleUpdateIsSpinner(false)
             setInputValue('')
           } else {
             openNotification('error', 'Please connect wallet')
@@ -83,7 +78,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         }
         break
       default:
-        return () => console.log('default')
+        return () => {}
     }
   }
 
@@ -103,15 +98,18 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         break
       case 'server':
         return async (id: string) => {
+          handleUpdateIsSpinner(true)
           const updatedTodoList = await setDoneTodos(id)
+          handleUpdateIsSpinner(false)
+
           handleUpdateTodoListServer(updatedTodoList)
         }
         break
       case 'blockchain':
         return async (id: string) => {
+          handleUpdateIsSpinner(true)
           await updateTodoBC(id)
-          const updatedTodos = await getTodosBC()
-          console.log(updatedTodos)
+          handleUpdateIsSpinner(true)
         }
         break
       default:
@@ -131,15 +129,18 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         break
       case 'server':
         return async (id: string) => {
+          handleUpdateIsSpinner(true)
           const updatedTodoList = await removeTodos(id)
+          handleUpdateIsSpinner(false)
+
           handleUpdateTodoListServer(updatedTodoList)
         }
         break
       case 'blockchain':
         return async (id: string) => {
+          handleUpdateIsSpinner(true)
           await deleteTodoBC(id)
-          const updatedTodos = await getTodosBC()
-          console.log(updatedTodos)
+          handleUpdateIsSpinner(false)
         }
         break
       default:
@@ -148,7 +149,10 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
   }
 
   const handleConnectWallet = async () => {
+    handleUpdateIsSpinner(true)
     const account = await connectWallet()
+    handleUpdateIsSpinner(false)
+
     handleUpdateAccount(account)
   }
 

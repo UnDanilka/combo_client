@@ -1,13 +1,13 @@
 import { SettingTwoTone } from '@ant-design/icons'
-
-const spinnerStyle = {
-  fontSize: '30px',
-}
+import { useContext } from 'react'
+import ComboContext from '../../../Context/ComboContext'
 
 const Spinner = () => {
+  const { isSpinner } = useContext(ComboContext)
+
   return (
     <div className='spinner'>
-      <SettingTwoTone spin twoToneColor='#eb2f96' style={spinnerStyle} />
+      <SettingTwoTone spin twoToneColor='#eb2f96' style={{ fontSize: '40px', display: isSpinner ? 'block' : 'none' }} />
     </div>
   )
 }
