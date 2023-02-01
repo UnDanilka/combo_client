@@ -1,11 +1,11 @@
 import education from '../../assets/education.jpg'
 import experience from '../../assets/experience.jpg'
 import { useContext } from 'react'
-import ComboContext from '../../Context/ComboContext'
 import good from '../../assets/photo.jpg'
 import bad from '../../assets/photo_dark.jpg'
 import ContentItem from './ContentItem/ContentItem'
 import SkillsItem from './SkillsItem/SkillsItem'
+import ThemeContext from '../../Context/ThemeContext'
 
 const frontendData = ['JS', 'CSS', 'HTML', 'React', 'Redux', 'Typescript', 'Jest', 'Antd', 'MUI']
 const backendData = ['NodeJS', 'Express', 'Mongo']
@@ -36,7 +36,9 @@ const contentItemData = [
 ]
 
 const Main = () => {
-  const { theme } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
+
+  console.log('render')
 
   return (
     <div className='main'>

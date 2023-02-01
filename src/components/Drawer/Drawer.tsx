@@ -35,12 +35,13 @@ const Drawer = () => {
             </div>
             <div className='drawer_menu_content'>
               <div className='drawer_menu_content_list'>
-                {links.map((link) => {
+                {links.map((link, idx) => {
                   return (
                     <Link
                       className='drawer_menu_content_list_item'
                       to={link.link}
                       onClick={() => handleUpdateIsDrawer(false)}
+                      key={idx}
                     >
                       {link.title}
                     </Link>

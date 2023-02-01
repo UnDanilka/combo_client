@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import ComboContext from '../../../Context/ComboContext'
 import { IContentItem } from '../../../Types/types'
 import { motion } from 'framer-motion'
+import ThemeContext from '../../../Context/ThemeContext'
 
 const ContentItem = ({ text, imgWidth, imgHeight, textFirst, src }: IContentItem) => {
-  const { theme } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
 
   const MotionDiv = () => (
     <motion.div

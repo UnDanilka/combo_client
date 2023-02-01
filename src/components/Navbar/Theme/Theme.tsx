@@ -3,12 +3,12 @@ import { ReactComponent as Moon } from '../../../assets/moon.svg'
 import { ReactComponent as Sun } from '../../../assets/sun.svg'
 import { useCallback } from 'react'
 import { useContext } from 'react'
-import ComboContext from '../../../Context/ComboContext'
+import ThemeContext from '../../../Context/ThemeContext'
 
 const svgStyle = { width: '20px', marginRight: '5px' }
 
 const Theme = () => {
-  const { theme, handleUpdateTheme } = useContext(ComboContext)
+  const { theme, handleUpdateTheme } = useContext(ThemeContext)
 
   const handleThemeChange = useCallback(
     (e: boolean) => {

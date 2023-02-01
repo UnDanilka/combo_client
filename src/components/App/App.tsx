@@ -5,11 +5,11 @@ import Contacts from '../Page3/Contacts'
 import { Routes, Route } from 'react-router-dom'
 import NotFound from '../NotFound/NotFound'
 import { useContext } from 'react'
-import ComboContext from '../../Context/ComboContext'
 import Drawer from '../Drawer/Drawer'
+import ThemeContext from '../../Context/ThemeContext'
 
 function App() {
-  const { theme } = useContext(ComboContext)
+  const { theme } = useContext(ThemeContext)
 
   return (
     <div className={`app ${theme === 'light' ? 'light' : 'dark'}`}>
