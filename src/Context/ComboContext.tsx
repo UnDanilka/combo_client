@@ -55,17 +55,19 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   }, [currentAccount, ethereum])
 
   useEffect(() => {
-    ethereum.on('accountsChanged', function (accounts: string[]) {
-      setCurrentAccount(accounts[0])
-    })
-    const getCurrentAccount = async () => {
-      const provider = new ethers.providers.Web3Provider(ethereum)
-      const list = await provider.listAccounts()
-      if (list[0]) {
-        setCurrentAccount(list[0])
+    if (ethereum) {
+      ethereum.on('accountsChanged', function (accounts: string[]) {
+        setCurrentAccount(accounts[0])
+      })
+      const getCurrentAccount = async () => {
+        const provider = new ethers.providers.Web3Provider(ethereum)
+        const list = await provider.listAccounts()
+        if (list[0]) {
+          setCurrentAccount(list[0])
+        }
       }
+      getCurrentAccount()
     }
-    getCurrentAccount()
   }, [ethereum])
 
   useEffect(() => {
