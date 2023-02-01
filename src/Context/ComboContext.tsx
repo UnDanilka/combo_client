@@ -1,3 +1,4 @@
+import { ethers } from 'ethers'
 import { createContext, useEffect, useState } from 'react'
 import { getTodos } from '../APIs/apis'
 import { getTodoContract, getTodosBC } from '../Blockchain/methods'
@@ -35,33 +36,38 @@ export const ComboProvider = ({ children }: IComboProvider) => {
   const [todoListBC, setTodoListBC] = useState<ITodo[]>([])
   const [currentAccount, setCurrentAccount] = useState<string>('')
   const [isDrawer, setIsDrawer] = useState<boolean>(false)
-  const [provider] = useState(ethereum)
 
   useEffect(() => {
-    if (provider && currentAccount) {
+    if (ethereum && currentAccount) {
+      console.log('hi')
       getTodoContract().on('TodosUpdate', (todos, address) => {
         if (address === currentAccount) {
           setTodoListBC(todos)
         }
       })
-    }
-  }, [currentAccount, provider])
-
-  useEffect(() => {
-    getTodos().then((res) => setTodoListServer(res))
-  }, [])
-
-  useEffect(() => {
-    if (provider) {
       const getTodosFromContract = async () => {
         const todos = await getTodosBC()
         console.log(todos)
-
         setTodoListBC(todos)
       }
       getTodosFromContract()
     }
-  }, [currentAccount, provider])
+  }, [currentAccount, ethereum])
+
+  useEffect(() => {
+    const getCurrentAccount = async () => {
+      const provider = new ethers.providers.Web3Provider(ethereum)
+      const list = await provider.listAccounts()
+      if (list[0]) {
+        setCurrentAccount(list[0])
+      }
+    }
+    getCurrentAccount()
+  }, [ethereum])
+
+  useEffect(() => {
+    getTodos().then((res) => setTodoListServer(res))
+  }, [])
 
   const handleUpdateTheme = (type: string) => {
     setTheme(type)
