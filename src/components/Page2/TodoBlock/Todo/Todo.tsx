@@ -42,8 +42,10 @@ const Todo = ({ handleAdd, todoList, handleSetDone, handleRemove, color }: ITodo
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={(e) => handleEnterDown(e)}
+          data-testid='todo_input'
         />
         <div
+          data-testid='todo_add'
           onClick={handleTodoValidate}
           className={`todo_input_btn ${todoList.length === 0 && 'todo_input_btn-empty'}`}
           style={{ backgroundColor: color }}

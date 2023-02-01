@@ -12,7 +12,7 @@ const motionRules = {
 
 const TodosItem = ({ value, done, id, handleSetDone, handleRemove }: ITodoItem) => {
   return (
-    <motion.div {...motionRules} layout className='item'>
+    <motion.div data-testid='todo_item' {...motionRules} layout className='item'>
       <div className={`item_title ${done && 'item_completed'}`}>
         <div className={`item_title_text ${done && 'done'}`}>{value}</div>
       </div>

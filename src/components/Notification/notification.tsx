@@ -1,4 +1,4 @@
-import notification from 'antd/es/notification'
+import notification from 'antd/lib/notification'
 import { NotificationType } from '../../Types/types'
 import { CloseCircleFilled, CloseOutlined } from '@ant-design/icons'
 
