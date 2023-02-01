@@ -109,7 +109,7 @@ const TodoBlock = ({ text, img, label }: ITodoBlock) => {
         return async (id: string) => {
           handleUpdateIsSpinner(true)
           await updateTodoBC(id)
-          handleUpdateIsSpinner(true)
+          handleUpdateIsSpinner(false)
         }
         break
       default:
